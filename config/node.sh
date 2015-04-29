@@ -1,8 +1,7 @@
-#!/usr/bin/env zsh
+#!/bin/sh
 
 
 # activate nvm
-export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
 # install node and iojs, default to iojs
