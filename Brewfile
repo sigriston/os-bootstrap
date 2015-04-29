@@ -37,6 +37,10 @@ brew "zopfli"
 brew "zsh"
 brew "zsh-lovers"
 
+# emacs-mac
+tap "railwaycat/emacsmacport"
+brew "emacs-mac"
+
 # casks
 cask "adobe-photoshop-lightroom"
 cask "caffeine"
