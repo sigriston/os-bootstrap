@@ -7,6 +7,7 @@ cask "xquartz"
 # brew away
 brew "dos2unix"
 brew "editorconfig"
+brew "fasd"
 brew "ffmpeg"
 brew "gcc"
 brew "gdal"
