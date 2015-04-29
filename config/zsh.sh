@@ -5,7 +5,7 @@
 sudo sh -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
 
 # clone prezto
-git clone https://github.com/sigriston/prezto ~/.zprezto
+git clone --recursive https://github.com/sigriston/prezto ~/.zprezto
 
 # clone zsh-notify
 git clone https://github.com/marzocchi/zsh-notify ~/.zsh-notify
