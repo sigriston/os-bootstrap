@@ -5,7 +5,7 @@
 eval "$(pyenv init -)"
 
 # CFLAGS to properly build python on OS X
-CFLAGS="${CFLAGS} -I$(xcrun --show-sdk-path)/usr/include"
+export CFLAGS="${CFLAGS} -I$(xcrun --show-sdk-path)/usr/include"
 
 # install latest python 2.7 and 3.4
 pyenv install 2.7.9
