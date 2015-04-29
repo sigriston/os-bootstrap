@@ -1,14 +1,17 @@
 # cask before all
 brew "caskroom/cask/brew-cask"
 
+# get xquartz, it is a dependency
+cask "xquartz"
+
 # brew away
 brew "dos2unix"
 brew "editorconfig"
 brew "ffmpeg"
+brew "gcc"
 brew "gdal"
 brew "git"
 brew "go"
-brew "hdf5"
 brew "hub"
 brew "jmeter"
 brew "jq"
