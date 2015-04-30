@@ -35,9 +35,16 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 # Wipe all (default) app icons from the Dock
 # This is only really useful when setting up a new Mac, or if you don’t use
 # the Dock to launch apps.
-#defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock persistent-apps -array
 
-# DOCKUTIL STUFF HERE
+# Setup dock items
+dockutil --add "/Applications/Launchpad.app"
+dockutil --add "/Applications/Safari.app"
+dockutil --add "/Applications/Mail.app"
+dockutil --add "/Applications/iTunes.app"
+dockutil --add "/Applications/App Store.app"
+dockutil --add "~/Applications/iTerm.app"
+dockutil --add "$(brew --prefix emacs-mac)/Emacs.app"
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
