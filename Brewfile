@@ -61,3 +61,10 @@ cask "transmission"
 cask "virtualbox"
 cask "vlc"
 cask "xmind"
+
+# fonts
+tap "caskroom/fonts"
+cask "font-lato"
+cask "font-source-code-pro"
+cask "font-source-sans-pro"
+cask "font-source-serif-pro"
