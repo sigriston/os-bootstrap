@@ -41,6 +41,7 @@ defaults write com.apple.dock persistent-apps -array
 dockutil --add "/Applications/Launchpad.app"
 dockutil --add "/Applications/Safari.app"
 dockutil --add "/Applications/Mail.app"
+dockutil --add "/Applications/Calendar.app"
 dockutil --add "/Applications/iTunes.app"
 dockutil --add "/Applications/App Store.app"
 dockutil --add "~/Applications/iTerm.app"
