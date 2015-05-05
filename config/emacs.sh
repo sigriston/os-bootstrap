@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 
 # link Emacs.app under Applications

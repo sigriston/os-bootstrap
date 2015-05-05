@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 
 # based on .osx from https://mths.be/osx

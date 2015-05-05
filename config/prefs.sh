@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 
 PREFSDIR="${HOME}/Library/Preferences"
