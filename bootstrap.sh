@@ -13,8 +13,8 @@ pushd "$(dirname $0)/config"
 ./dotfiles.sh
 ./emacs.sh
 ./node.sh
-./osx.sh
 ./prefs.sh
 ./python.sh
 ./zsh.sh
+./osx.sh
 popd
