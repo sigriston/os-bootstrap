@@ -40,7 +40,7 @@ brew "zsh-lovers"
 
 # emacs-mac
 tap "railwaycat/emacsmacport"
-brew "emacs-mac"
+brew "emacs-mac", args: ["with-spacemacs-icon"]
 
 # casks
 cask "adobe-photoshop-lightroom"
