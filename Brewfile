@@ -44,12 +44,15 @@ brew "emacs-mac", args: ["with-spacemacs-icon"]
 
 # casks
 cask "adobe-photoshop-lightroom"
+cask "clipmenu"
+cask "controlplane"
 cask "firefox"
 cask "flux"
 cask "google-chrome"
 cask "iterm2"
 cask "julia"
 cask "loading"
+cask "macdown"
 cask "microsoft-office"
 cask "packer"
 cask "r"
