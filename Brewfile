@@ -17,6 +17,7 @@ brew "go"
 brew "hub"
 brew "jmeter"
 brew "jq"
+brew "macvim", args: ["custom-icons", "override-system-vim"]
 brew "mdbtools"
 brew "nvm"
 brew "pv"

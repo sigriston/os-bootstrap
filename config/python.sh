@@ -10,7 +10,7 @@ export CFLAGS="${CFLAGS} -I$(xcrun --show-sdk-path)/usr/include"
 # install latest python 2.7 and 3.4
 pyenv install 2.7.9
 pyenv install 3.4.3
-pyenv global 2.7.9
+pyenv shell 2.7.9
 
 # update pip
 pip install -U pip
