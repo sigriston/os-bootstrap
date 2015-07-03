@@ -16,17 +16,20 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Install homebrew bundle & bundle up!
-brew tap homebrew/bundle
-brew bundle
+# Install homebrew-cask
+brew install caskroom/cask/brew-cask
 
-# Now run config scripts
-pushd "$(dirname $0)/config"
-./dotfiles.sh
-./emacs.sh
-./node.sh
-./prefs.sh
-./python.sh
-./zsh.sh
-./osx.sh
-popd
+# Install ansible
+brew install ansible
+
+# Now run ansible playbook and be happy!
+ansible-playbook -i hosts playbook.yml
+# pushd "$(dirname $0)/config"
+# ./dotfiles.sh
+# ./emacs.sh
+# ./node.sh
+# ./prefs.sh
+# ./python.sh
+# ./zsh.sh
+# ./osx.sh
+# popd

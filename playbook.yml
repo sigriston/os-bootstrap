@@ -1,0 +1,121 @@
+---
+- hosts: all
+  vars:
+    home: /Users/sigriston
+    src_dir: /Users/sigriston/src
+  tasks:
+    - name: tap homebrew taps
+      homebrew_tap: tap={{ item }} state=present
+      with_items:
+        - railwaycat/emacsmacport
+        - caskroom/fonts
+
+    - name: update homebrew
+      homebrew: update_homebrew=yes
+
+    - name: install xquartz
+      homebrew_cask: name=xquartz state=present
+
+    - name: install homebrew packages
+      homebrew: name={{ item }} state=latest
+      with_items:
+        - dockutil
+        - dos2unix
+        - editorconfig
+        - fasd
+        - ffmpeg
+        - gcc
+        - gdal
+        - git
+        - go
+        - hub
+        - jmeter
+        - jq
+        - mdbtools
+        - pv
+        - pxz
+        - pyenv
+        - pyenv-virtualenv
+        - pyenv-which-ext
+        - readline
+        - sqlite
+        - terminal-notifier
+        - the_platinum_searcher
+        - tmux
+        - unrar
+        - wget
+        - wine
+        - youtube-dl
+        - zopfli
+        - zsh
+        - zsh-lovers
+
+    - name: install macvim
+      homebrew: name=macvim state=latest install_options=custom-icons,override-system-vim
+
+    - name: install emacs
+      homebrew: name=emacs-mac state=latest install_options=with-spacemacs-icon
+
+    - name: install homebrew cask apps
+      homebrew_cask: name={{ item }} state=present
+      with_items:
+        - adobe-photoshop-lightroom
+        - clipmenu
+        - controlplane
+        - firefox
+        - flux
+        - google-chrome
+        - google-drive
+        - iterm2
+        - java
+        - julia
+        - loading
+        - macdown
+        - microsoft-office
+        - packer
+        - r
+        - rstudio
+        - sequel-pro
+        - skype
+        - spectacle
+        - transmission
+        - vagrant
+        - virtualbox
+        - vlc
+        - xmind
+
+    - name: install fonts
+      homebrew_cask: name={{ item }} state=present
+      with_items:
+        - font-lato
+        - font-source-code-pro
+        - font-source-sans-pro
+        - font-source-serif-pro
+
+    - name: make src dir
+      file: path={{ src_dir }} state=directory
+
+    - name: clone dotfiles
+      git: repo=git@github.com:sigriston/dotfiles.git dest={{ src_dir }}/dotfiles
+
+    - name: link .gitconfig
+      file: path={{ home }}/.gitconfig src={{ src_dir }}/dotfiles/git/gitconfig state=link
+
+    - name: link .vimrc
+      file: path={{ home }}/.vimrc src={{ src_dir }}/dotfiles/vim/vimrc state=link
+
+    - name: link .gvimrc
+      file: path={{ home }}/.gvimrc src={{ src_dir }}/dotfiles/vim/gvimrc state=link
+
+    - name: link .spacemacs
+      file: path={{ home }}/.spacemacs src={{ src_dir }}/dotfiles/spacemacs/spacemacs state=link
+
+    - name: get emacs-mac prefix
+      command: brew --prefix emacs-mac
+      register: emacs_mac_prefix
+
+    - name: link Emacs.app under Applications
+      file: path={{ home }}/Applications src={{ emacs_mac_prefix.stdout }}/Emacs.app state=link
+
+    - name: install spacemacs
+      git: repo=http://github.com/syl20bnr/spacemacs dest={{ home }}/.emacs.d
