@@ -119,3 +119,9 @@
 
     - name: install spacemacs
       git: repo=http://github.com/syl20bnr/spacemacs dest={{ home }}/.emacs.d
+
+    - name: install ndenv
+      git: repo=http://github.com/riywo/ndenv dest={{ home }}/.ndenv
+
+    - name: install node-build
+      git: repo=http://github.com/riywo/node-build dest={{ home }}/.ndenv/plugins/node-build
