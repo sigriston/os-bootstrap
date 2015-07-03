@@ -24,6 +24,7 @@
         - editorconfig
         - fasd
         - ffmpeg
+        - fzf
         - gcc
         - gdal
         - git
