@@ -9,9 +9,6 @@ nvm install node
 nvm install iojs
 nvm alias default iojs
 
-# update npm
-npm install -g npm
-
 # install global npm packages
 npm install -g babel
 npm install -g bower
