@@ -2,5 +2,7 @@
 dependencies:
   - { role: dotfiles }
   - { role: tools }
+  - { role: fish }
   - { role: R }
   - { role: apps }
+  - { role: emacs }

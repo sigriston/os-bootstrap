@@ -1,0 +1,32 @@
+---
+- name: install fish
+  homebrew: name=fish state=latest install_options=with-spacemacs-icon
+
+- name: add fish to /etc/shells
+  lineinfile: dest=/etc/shells line='/usr/local/bin/fish' state=present
+  become: yes
+
+- name: set user shell to fish
+  user: name={{ ansible_user_id }} shell=/usr/local/bin/fish
+
+- name: install oh-my-fish
+  shell: curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/tools/install.fish | fish
+  args:
+    creates: "{{ home }}/.oh-my-fish"
+
+- name: link config.fish
+  file: path={{ home }}/.config/fish/config.fish src={{ src_dir }}/dotfiles/fish/config.fish state=link
+
+- name: run omf install
+  shell: omf install
+  args:
+    executable: /usr/local/bin/fish
+
+- name: obtain fzf prefix
+  command: brew --prefix fzf
+  register: fzfprefix
+
+- name: install fzf keybindings
+  shell: "{{ fzfprefix.stdout | quote }}/install"
+  args:
+    creates: "{{ home }}/.config/fish/functions/fzf_key_bindings.fish"
