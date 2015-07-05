@@ -1,0 +1,7 @@
+---
+- name: install xquartz
+  homebrew_cask: name=xquartz state=present
+
+- name: install homebrew packages
+  homebrew: name={{ item }} state=latest
+  with_items: "{{ brewpackages }}"

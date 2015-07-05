@@ -1,0 +1,31 @@
+---
+brewpackages:
+  - dockutil
+  - dos2unix
+  - editorconfig
+  - fasd
+  - ffmpeg
+  - fzf
+  - gcc
+  - gdal
+  - git
+  - go
+  - hub
+  - jmeter
+  - jq
+  - mdbtools
+  - pv
+  - pxz
+  - pyenv
+  - pyenv-virtualenv
+  - pyenv-which-ext
+  - readline
+  - sqlite
+  - terminal-notifier
+  - the_platinum_searcher
+  - tmux
+  - unrar
+  - wget
+  - wine
+  - youtube-dl
+  - zopfli

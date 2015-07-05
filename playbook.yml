@@ -13,44 +13,6 @@
     - name: update homebrew
       homebrew: update_homebrew=yes
 
-    - name: install xquartz
-      homebrew_cask: name=xquartz state=present
-
-    - name: install homebrew packages
-      homebrew: name={{ item }} state=latest
-      with_items:
-        - dockutil
-        - dos2unix
-        - editorconfig
-        - fasd
-        - ffmpeg
-        - fzf
-        - gcc
-        - gdal
-        - git
-        - go
-        - hub
-        - jmeter
-        - jq
-        - mdbtools
-        - pv
-        - pxz
-        - pyenv
-        - pyenv-virtualenv
-        - pyenv-which-ext
-        - readline
-        - sqlite
-        - terminal-notifier
-        - the_platinum_searcher
-        - tmux
-        - unrar
-        - wget
-        - wine
-        - youtube-dl
-        - zopfli
-        - zsh
-        - zsh-lovers
-
     - name: install macvim
       homebrew: name=macvim state=latest install_options=custom-icons,override-system-vim
 
