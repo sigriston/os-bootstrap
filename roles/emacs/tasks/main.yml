@@ -1,0 +1,16 @@
+---
+- name: add emacsmacport homebrew tap
+  homebrew_tap: tap=railwaycat/emacsmacport state=present
+
+- name: install emacs
+  homebrew: name=emacs-mac state=latest install_options=with-spacemacs-icon
+
+- name: get emacs-mac prefix
+  command: brew --prefix emacs-mac
+  register: emacs_mac_prefix
+
+- name: link Emacs.app under Applications
+  file: path={{ home }}/Applications src={{ emacs_mac_prefix.stdout }}/Emacs.app state=link
+
+- name: install spacemacs
+  git: repo=http://github.com/syl20bnr/spacemacs dest={{ home }}/.emacs.d

@@ -7,7 +7,6 @@
     - name: tap homebrew taps
       homebrew_tap: tap={{ item }} state=present
       with_items:
-        - railwaycat/emacsmacport
         - caskroom/fonts
 
     - name: update homebrew
@@ -15,9 +14,6 @@
 
     - name: install macvim
       homebrew: name=macvim state=latest install_options=custom-icons,override-system-vim
-
-    - name: install emacs
-      homebrew: name=emacs-mac state=latest install_options=with-spacemacs-icon
 
     - name: install homebrew cask apps
       homebrew_cask: name={{ item }} state=present
@@ -54,16 +50,6 @@
         - font-source-code-pro
         - font-source-sans-pro
         - font-source-serif-pro
-
-    - name: get emacs-mac prefix
-      command: brew --prefix emacs-mac
-      register: emacs_mac_prefix
-
-    - name: link Emacs.app under Applications
-      file: path={{ home }}/Applications src={{ emacs_mac_prefix.stdout }}/Emacs.app state=link
-
-    - name: install spacemacs
-      git: repo=http://github.com/syl20bnr/spacemacs dest={{ home }}/.emacs.d
 
     - name: install ndenv
       git: repo=http://github.com/riywo/ndenv dest={{ home }}/.ndenv
