@@ -1,0 +1,14 @@
+---
+rpackages:
+  - data.table
+  - downloader
+  - dplyr
+  - ggplot2
+  - ggvis
+  - httr
+  - jsonlite
+  - lubridate
+  - RSQLite
+  - sqldf
+  - swirl
+  - tidyr
