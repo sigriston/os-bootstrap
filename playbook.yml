@@ -55,24 +55,6 @@
         - font-source-sans-pro
         - font-source-serif-pro
 
-    - name: make src dir
-      file: path={{ src_dir }} state=directory
-
-    - name: clone dotfiles
-      git: repo=git@github.com:sigriston/dotfiles.git dest={{ src_dir }}/dotfiles
-
-    - name: link .gitconfig
-      file: path={{ home }}/.gitconfig src={{ src_dir }}/dotfiles/git/gitconfig state=link
-
-    - name: link .vimrc
-      file: path={{ home }}/.vimrc src={{ src_dir }}/dotfiles/vim/vimrc state=link
-
-    - name: link .gvimrc
-      file: path={{ home }}/.gvimrc src={{ src_dir }}/dotfiles/vim/gvimrc state=link
-
-    - name: link .spacemacs
-      file: path={{ home }}/.spacemacs src={{ src_dir }}/dotfiles/spacemacs/spacemacs state=link
-
     - name: get emacs-mac prefix
       command: brew --prefix emacs-mac
       register: emacs_mac_prefix

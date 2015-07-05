@@ -1,5 +1,6 @@
 ---
 dependencies:
+  - { role: dotfiles }
   - { role: tools }
   - { role: R }
   - { role: apps }
