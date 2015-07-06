@@ -1,0 +1,24 @@
+---
+cask_apps:
+  - adobe-photoshop-lightroom
+  - clipmenu
+  - controlplane
+  - firefox
+  - flux
+  - google-chrome
+  - google-drive
+  - iterm2
+  - java
+  - julia
+  - loading
+  - macdown
+  - microsoft-office
+  - packer
+  - sequel-pro
+  - skype
+  - spectacle
+  - transmission
+  - vagrant
+  - virtualbox
+  - vlc
+  - xmind
