@@ -23,4 +23,4 @@ brew install caskroom/cask/brew-cask
 brew install ansible
 
 # Now run ansible playbook and be happy!
-ansible-playbook -i hosts playbook.yml
+ansible-playbook -i hosts --ask-become-pass playbook.yml
