@@ -4,25 +4,5 @@
     home: /Users/sigriston
     src_dir: /Users/sigriston/src
   tasks:
-    - name: tap homebrew taps
-      homebrew_tap: tap={{ item }} state=present
-      with_items:
-        - caskroom/fonts
-
     - name: update homebrew
       homebrew: update_homebrew=yes
-
-    - name: install macvim
-      homebrew: name=macvim state=latest install_options=custom-icons,override-system-vim
-
-    - name: install homebrew cask apps
-      homebrew_cask: name={{ item }} state=present
-      with_items:
-
-    - name: install fonts
-      homebrew_cask: name={{ item }} state=present
-      with_items:
-        - font-lato
-        - font-source-code-pro
-        - font-source-sans-pro
-        - font-source-serif-pro

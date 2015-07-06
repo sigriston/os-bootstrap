@@ -3,8 +3,10 @@ dependencies:
   - { role: dotfiles }
   - { role: tools }
   - { role: fish }
-  - { role: R }
   - { role: apps }
   - { role: emacs }
   - { role: python }
   - { role: nodejs }
+  - { role: R }
+  - { role: prefs }
+  - { role: osx }
