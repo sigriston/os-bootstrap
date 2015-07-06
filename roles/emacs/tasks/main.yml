@@ -5,12 +5,8 @@
 - name: install emacs
   homebrew: name=emacs-mac state=latest install_options=with-spacemacs-icon
 
-- name: get emacs-mac prefix
-  command: brew --prefix emacs-mac
-  register: emacs_mac_prefix
-
 - name: link Emacs.app under Applications
-  file: path={{ home }}/Applications src={{ emacs_mac_prefix.stdout }}/Emacs.app state=link
+  homebrew: name=emacs-mac state=linked
 
 - name: link .spacemacs
   file: path={{ home }}/.spacemacs src={{ src_dir }}/dotfiles/spacemacs/spacemacs state=link

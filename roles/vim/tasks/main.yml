@@ -2,6 +2,9 @@
 - name: install macvim
   homebrew: name=macvim state=latest install_options=custom-icons,override-system-vim
 
+- name: link macvim under Applications
+  homebrew: name=macvim state=linked
+
 - name: link .vimrc
   file: path={{ home }}/.vimrc src={{ src_dir }}/dotfiles/vim/vimrc state=link
 
