@@ -8,7 +8,8 @@
 
 - name: install python
   shell: "pyenv install {{ item }}"
-  creates: "{{ ansible_env.HOME }}/.pyenv/versions/{{ item }}"
+  args:
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/{{ item }}"
   with_items: "{{ python_versions }}"
 
 - name: install pip packages

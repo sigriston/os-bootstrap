@@ -7,9 +7,10 @@
 
 - name: install node.js
   shell: "ndenv install {{ item }}"
+  args:
+    creates: "{{ ansible_env.HOME }}/.ndenv/versions/{{ item }}"
   environment:
     PATH: "{{ ansible_env.HOME }}/.ndenv/bin:{{ ansible_env.HOME }}/.ndenv/shims:{{ ansible_env.PATH }}"
-  creates: "{{ ansible_env.HOME }}/.ndenv/versions/{{ item }}"
   with_items: "{{ nodejs_versions }}"
 
 - name: install npm global packages
