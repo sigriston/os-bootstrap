@@ -1,0 +1,5 @@
+---
+- name: run osx setup script
+  script: osx.sh
+  args:
+    creates: "{{ ansible_env.HOME }}/.osx"
