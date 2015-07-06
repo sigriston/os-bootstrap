@@ -42,7 +42,7 @@ dockutil --add "/Applications/Calendar.app"
 dockutil --add "/Applications/iTunes.app"
 dockutil --add "/Applications/App Store.app"
 dockutil --add "~/Applications/iTerm.app"
-dockutil --add "$(brew --prefix emacs-mac)/Emacs.app"
+dockutil --add "~/Applications/Emacs.app"
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
