@@ -1,8 +1,4 @@
 ---
 - hosts: all
-  vars:
-    home: /Users/sigriston
-    src_dir: /Users/sigriston/src
-  tasks:
-    - name: update homebrew
-      homebrew: update_homebrew=yes
+  roles:
+    - development

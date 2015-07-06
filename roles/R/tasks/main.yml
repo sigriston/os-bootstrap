@@ -15,4 +15,4 @@
   command: Rscript -e "install.packages('{{ item }}', repos='http://cran.rstudio.com')"
   args:
     creates: "{{ rlibpath }}/{{ item }}"
-  with_items: "{{ rpackages }}"
+  with_items: "{{ R_packages }}"

@@ -1,5 +1,5 @@
 ---
-rpackages:
+R_packages:
   - data.table
   - downloader
   - dplyr

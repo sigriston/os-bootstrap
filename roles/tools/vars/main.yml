@@ -1,5 +1,5 @@
 ---
-brewpackages:
+brew_packages:
   - dockutil
   - dos2unix
   - editorconfig

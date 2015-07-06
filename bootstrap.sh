@@ -24,12 +24,3 @@ brew install ansible
 
 # Now run ansible playbook and be happy!
 ansible-playbook -i hosts playbook.yml
-# pushd "$(dirname $0)/config"
-# ./dotfiles.sh
-# ./emacs.sh
-# ./node.sh
-# ./prefs.sh
-# ./python.sh
-# ./zsh.sh
-# ./osx.sh
-# popd
