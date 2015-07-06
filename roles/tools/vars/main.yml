@@ -3,7 +3,6 @@ brew_packages:
   - dockutil
   - dos2unix
   - editorconfig
-  - fasd
   - ffmpeg
   - fzf
   - gcc
