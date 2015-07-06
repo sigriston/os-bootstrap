@@ -7,12 +7,16 @@ cask_apps:
   - flux
   - google-chrome
   - google-drive
+  - gpgtools
+  - handbrake
   - iterm2
   - java
   - julia
+  - keyboard-cleaner
   - loading
   - macdown
   - microsoft-office
+  - namebench
   - packer
   - sequel-pro
   - skype

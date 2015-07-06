@@ -10,9 +10,11 @@ brewpackages:
   - gdal
   - git
   - go
+  - highlight
   - hub
   - jmeter
   - jq
+  - lynis
   - mdbtools
   - pv
   - pxz
@@ -24,6 +26,7 @@ brewpackages:
   - terminal-notifier
   - the_platinum_searcher
   - tmux
+  - tree
   - unrar
   - wget
   - wine
