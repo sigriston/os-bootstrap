@@ -18,9 +18,6 @@ brewpackages:
   - mdbtools
   - pv
   - pxz
-  - pyenv
-  - pyenv-virtualenv
-  - pyenv-which-ext
   - readline
   - sqlite
   - terminal-notifier

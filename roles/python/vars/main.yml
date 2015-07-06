@@ -1,0 +1,49 @@
+---
+python_versions:
+  - 2.7.10
+  - 3.4.3
+
+python_packages:
+  - pip
+  - BeautifulSoup
+  - Bottleneck
+  - Cython
+  - docutils
+  - GDAL
+  - gnureadline
+  - ipython
+  - jedi
+  - Jinja2
+  - json-rpc
+  - jsonschema
+  - m3-dbfpy
+  - MarkupSafe
+  - matplotlib
+  - mistune
+  - mock
+  - nose
+  - numexpr
+  - numpy
+  - numpydoc
+  - pandas
+  - ptyprocess
+  - pyasn1
+  - pycparser
+  - Pygments
+  - pyparsing
+  - python-dateutil
+  - pytz
+  - pyzmq
+  - queuelib
+  - rarfile
+  - requests
+  - scipy
+  - service-factory
+  - setuptools
+  - six
+  - Sphinx
+  - statsmodels
+  - terminado
+  - tornado
+  - vboxapi
+  - xlrd

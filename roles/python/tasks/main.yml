@@ -1,0 +1,21 @@
+---
+- name: install pyenv
+  homebrew: name={{ item }} state=latest
+  with_items:
+  - pyenv
+  - pyenv-virtualenv
+  - pyenv-which-ext
+
+- name: install python
+  shell: "pyenv install {{ item }}"
+  creates: "{{ ansible_env.HOME }}/.pyenv/versions/{{ item }}"
+  with_items: "{{ python_versions }}"
+
+- name: install pip packages
+  pip:
+    name: "{{ item[0] }}"
+    state: latest
+    executable: "{{ ansible_env.HOME }}/.pyenv/versions/{{ item[1] }}/bin/pip"
+  with_nested:
+    - "{{ python_packages }}"
+    - "{{ python_versions }}"
