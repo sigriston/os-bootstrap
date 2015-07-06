@@ -12,5 +12,8 @@
 - name: link Emacs.app under Applications
   file: path={{ home }}/Applications src={{ emacs_mac_prefix.stdout }}/Emacs.app state=link
 
+- name: link .spacemacs
+  file: path={{ home }}/.spacemacs src={{ src_dir }}/dotfiles/spacemacs/spacemacs state=link
+
 - name: install spacemacs
   git: repo=http://github.com/syl20bnr/spacemacs dest={{ home }}/.emacs.d
