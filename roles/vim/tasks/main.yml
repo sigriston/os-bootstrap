@@ -1,0 +1,9 @@
+---
+- name: install macvim
+  homebrew: name=macvim state=latest install_options=custom-icons,override-system-vim
+
+- name: link .vimrc
+  file: path={{ ansible_env.HOME }}/.vimrc src={{ src_dir }}/dotfiles/vim/vimrc state=link
+
+- name: link .gvimrc
+  file: path={{ ansible_env.HOME }}/.gvimrc src={{ src_dir }}/dotfiles/vim/gvimrc state=link
