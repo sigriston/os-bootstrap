@@ -1,0 +1,23 @@
+---
+- name: install ndenv
+  git: repo=http://github.com/riywo/ndenv dest={{ home }}/.ndenv
+
+- name: install node-build
+  git: repo=http://github.com/riywo/node-build dest={{ home }}/.ndenv/plugins/node-build
+
+- name: install node.js
+  shell: "ndenv install {{ item }}"
+  environment:
+    PATH: "{{ ansible_env.HOME }}/.ndenv/bin:{{ ansible_env.HOME }}/.ndenv/shims:{{ ansible_env.PATH }}"
+  creates: "{{ ansible_env.HOME }}/.ndenv/versions/{{ item }}"
+  with_items: "{{ nodejs_versions }}"
+
+- name: install npm global packages
+  npm:
+    name: "{{ item[0] }}"
+    global: yes
+    state: latest
+    executable: "{{ ansible_env.HOME }}/.ndenv/versions/{{ item[1] }}/bin/npm"
+  with_nested:
+    - "{{ nodejs_packages }}"
+    - "{{ nodejs_versions }}"
