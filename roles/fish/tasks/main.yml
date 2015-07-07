@@ -7,7 +7,8 @@
   become: yes
 
 - name: set user shell to fish
-  user: name={{ ansible_user_id }} shell=/usr/local/bin/fish
+  user: name="{{ ansible_user_id }}" shell=/usr/local/bin/fish
+  become: yes
 
 - name: install oh-my-fish
   shell: curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/tools/install.fish | fish
@@ -15,7 +16,7 @@
     creates: "{{ home }}/.oh-my-fish"
 
 - name: link config.fish
-  file: path={{ home }}/.config/fish/config.fish src={{ src_dir }}/dotfiles/fish/config.fish state=link
+  file: path="{{ home }}/.config/fish/config.fish" src="{{ src_dir }}/dotfiles/fish/config.fish" state=link
 
 - name: run omf install
   shell: omf install

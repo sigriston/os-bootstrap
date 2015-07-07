@@ -1,6 +1,6 @@
 ---
 - name: install R, Rstudio
-  homebrew_cask: name={{ item }} state=present
+  homebrew_cask: name="{{ item }}" state=present
   with_items:
     - r
     - rstudio

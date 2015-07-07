@@ -9,7 +9,7 @@
   homebrew: name=emacs-mac state=linked
 
 - name: link .spacemacs
-  file: path={{ home }}/.spacemacs src={{ src_dir }}/dotfiles/spacemacs/spacemacs state=link
+  file: path="{{ home }}/.spacemacs" src="{{ src_dir }}/dotfiles/spacemacs/spacemacs" state=link
 
 - name: install spacemacs
-  git: repo=http://github.com/syl20bnr/spacemacs dest={{ home }}/.emacs.d
+  git: repo=http://github.com/syl20bnr/spacemacs dest="{{ home }}/.emacs.d"

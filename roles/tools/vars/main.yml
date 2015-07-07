@@ -15,6 +15,7 @@ brew_packages:
   - jq
   - lynis
   - mdbtools
+  - pandoc
   - pv
   - pxz
   - readline

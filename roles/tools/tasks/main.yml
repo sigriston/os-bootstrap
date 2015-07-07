@@ -3,5 +3,5 @@
   homebrew_cask: name=xquartz state=present
 
 - name: install homebrew packages
-  homebrew: name={{ item }} state=latest update_homebrew=yes
+  homebrew: name="{{ item }}" state=latest update_homebrew=yes
   with_items: "{{ brew_packages }}"
