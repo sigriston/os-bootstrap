@@ -12,6 +12,7 @@
 - name: install oh-my-fish
   shell: curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/tools/install.fish | fish
   args:
+    executable: /usr/local/bin/fish
     creates: "{{ home }}/.oh-my-fish"
 
 - name: link config.fish
