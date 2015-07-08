@@ -7,8 +7,7 @@
   become: yes
 
 - name: set user shell to fish
-  user: name="{{ ansible_user_id }}" shell=/usr/local/bin/fish
-  become: yes
+  command: chsh -s /usr/local/bin/fish
 
 - name: install oh-my-fish
   shell: curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/tools/install.fish | fish
