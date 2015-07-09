@@ -13,6 +13,13 @@
     PATH: "{{ ansible_env.HOME }}/.ndenv/bin:{{ ansible_env.HOME }}/.ndenv/shims:{{ ansible_env.PATH }}"
   with_items: "{{ nodejs_versions }}"
 
+- name: set default node version
+  shell: "ndenv global {{ nodejs_versions[0] }}"
+  args:
+    creates: "{{ ansible_env.HOME }}/.ndenv/versions/{{ nodejs_versions[0] }}"
+  environment:
+    PATH: "{{ ansible_env.HOME }}/.ndenv/bin:{{ ansible_env.HOME }}/.ndenv/shims:{{ ansible_env.PATH }}"
+
 - name: install npm global packages
   npm:
     name: "{{ item[1] }}"
