@@ -45,5 +45,4 @@ python_packages:
   - statsmodels
   - terminado
   - tornado
-  - vboxapi
   - xlrd
