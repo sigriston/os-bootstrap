@@ -5,6 +5,7 @@ dependencies:
   - { role: fish }
   - { role: apps }
   - { role: emacs }
+  - { role: vim }
   - { role: python }
   - { role: nodejs }
   - { role: R }
