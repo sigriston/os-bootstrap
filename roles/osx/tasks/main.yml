@@ -3,3 +3,4 @@
   script: osx.sh
   args:
     creates: "{{ ansible_env.HOME }}/.osx"
+  notify: restart affected apps
