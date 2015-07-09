@@ -7,7 +7,7 @@
   - pyenv-which-ext
 
 - name: install pip to system python
-  easy_install: name=pip state=latest
+  easy_install: name=pip
   become: yes
 
 - name: install python
