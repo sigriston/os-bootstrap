@@ -6,7 +6,9 @@
   homebrew: name=emacs-mac state=latest install_options=with-spacemacs-icon
 
 - name: link Emacs.app under Applications
-  homebrew: name=emacs-mac state=linked
+  command: brew linkapps emacs-mac --local
+  args:
+    creates: "{{ home }}/Applications/Emacs.app"
 
 - name: link .spacemacs
   file: path="{{ home }}/.spacemacs" src="{{ src_dir }}/dotfiles/spacemacs/spacemacs" state=link
