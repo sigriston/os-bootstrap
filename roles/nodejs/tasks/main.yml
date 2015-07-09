@@ -26,6 +26,8 @@
     global: yes
     state: latest
     executable: "{{ ansible_env.HOME }}/.ndenv/versions/{{ item[0] }}/bin/npm"
+  environment:
+    PATH: "{{ ansible_env.HOME }}/.ndenv/bin:{{ ansible_env.HOME }}/.ndenv/shims:{{ ansible_env.PATH }}"
   with_nested:
     - "{{ nodejs_versions }}"
     - "{{ nodejs_packages }}"
