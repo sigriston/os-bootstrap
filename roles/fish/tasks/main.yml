@@ -8,6 +8,7 @@
 
 - name: set user shell to fish
   command: chsh -s /usr/local/bin/fish
+  when: ansible_user_shell != "/usr/local/bin/fish"
 
 - name: install oh-my-fish
   shell: curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/tools/install.fish | fish
