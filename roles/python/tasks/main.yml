@@ -6,6 +6,10 @@
   - pyenv-virtualenv
   - pyenv-which-ext
 
+- name: install pip to system python
+  easy_install: name=pip state=latest
+  become: yes
+
 - name: install python
   shell: "pyenv install {{ item }}"
   args:
@@ -20,4 +24,11 @@
   with_nested:
     - "{{ python_versions }}"
     - "{{ python_packages }}"
+  ignore_errors: yes
+
+- name: install pip packages to system python
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ python_packages }}"
   ignore_errors: yes
