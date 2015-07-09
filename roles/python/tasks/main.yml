@@ -20,3 +20,4 @@
   with_nested:
     - "{{ python_packages }}"
     - "{{ python_versions }}"
+  ignore_errors: yes
