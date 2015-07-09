@@ -3,5 +3,5 @@
   copy:
     src: com.googlecode.iterm2.plist
     dest: "{{ ansible_env.HOME }}/Library/Preferences"
-    notify:
-      - reread defaults
+  notify:
+    - reread defaults
