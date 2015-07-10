@@ -19,6 +19,12 @@
 - name: link config.fish
   file: path="{{ home }}/.config/fish/config.fish" src="{{ src_dir }}/dotfiles/fish/config.fish" state=link force=yes
 
+- name: link fish functions
+  file: path="{{ home }}/.config/fish/functions/{{ item }}.fish" src="{{ src_dir }}/dotfiles/fish/functions/{{ item }}.fish" state=link force=yes
+  with_items:
+    - p
+    - ec
+
 - name: run omf install
   shell: omf install
   args:
