@@ -1,5 +1,5 @@
 ---
-- name: tap homebrew taps
+- name: tap homebrew fonts
   homebrew_tap: tap=caskroom/fonts state=present
 
 - name: install fonts
