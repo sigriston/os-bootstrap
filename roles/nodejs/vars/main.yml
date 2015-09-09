@@ -1,28 +1,27 @@
 ---
 nodejs_versions:
-  - iojs-v2.3.4
-  - v0.12.7
+  - v4.0.0
 
 nodejs_packages:
- - babel
- - bower
- - coffee-script
- - coffeelint
- - eslint
- - grunt-cli
- - gulp
- - html2jade
- - jake
- - js-beautify
- - js-yaml
- - js2coffee
- - jsonlint
- - jspm
- - karma-cli
- - less
- - LiveScript
- - nesh
- - npm-check-updates
- - sloc
- - tern
- - yo
+  - babel
+  - bower
+  - coffee-script
+  - coffeelint
+  - eslint
+  - grunt-cli
+  - gulp
+  - html2jade
+  - jake
+  - js-beautify
+  - js-yaml
+  - js2coffee
+  - jsonlint
+  - jspm
+  - karma-cli
+  - less
+  - LiveScript
+  - nesh
+  - npm-check-updates
+  - sloc
+  - tern
+  - yo
