@@ -12,6 +12,7 @@ R_packages:
   - lubridate
   - rlist
   - RSQLite
+  - rvest
   - showtext
   - sqldf
   - stringdist
