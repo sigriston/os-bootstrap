@@ -1,6 +1,6 @@
 ---
 nodejs_versions:
-  - v4.0.0
+  - v4.1.1
 
 nodejs_packages:
   - babel
@@ -11,6 +11,7 @@ nodejs_packages:
   - grunt-cli
   - gulp
   - html2jade
+  - jade
   - jake
   - js-beautify
   - js-yaml
