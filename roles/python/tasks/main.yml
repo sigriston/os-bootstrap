@@ -1,45 +1,7 @@
 ---
-- name: install pyenv
-  homebrew: name="{{ item }}" state=latest
-  with_items:
-    - pyenv
-    - pyenv-virtualenv
-    - pyenv-which-ext
-
 - name: install pip to system python
   easy_install: name=pip
   become: yes
-
-- name: find OS X SDK path
-  command: xcrun --show-sdk-path
-  register: xcrun_sdk_path_out
-- name: set osx_sdk_path fact
-  set_fact: osx_sdk_path="{{ xcrun_sdk_path_out.stdout }}"
-
-- name: find openssl path
-  command: brew --prefix openssl
-  register: brew_openssl_path_out
-- name: set openssl_path fact
-  set_fact: openssl_path="{{ brew_openssl_path_out.stdout }}"
-
-- name: install python
-  shell: "pyenv install {{ item }}"
-  args:
-    creates: "{{ ansible_env.HOME }}/.pyenv/versions/{{ item }}"
-  environment:
-    CFLAGS: "-I{{ osx_sdk_path }}/usr/include -I{{ openssl_path }}/include"
-    LDFLAGS: "-L{{ openssl_path }}/lib"
-  with_items: "{{ python_versions }}"
-
-- name: install pip packages
-  pip:
-    name: "{{ item[1] }}"
-    state: latest
-    executable: "{{ ansible_env.HOME }}/.pyenv/versions/{{ item[0] }}/bin/pip"
-  with_nested:
-    - "{{ python_versions }}"
-    - "{{ python_packages }}"
-  ignore_errors: yes
 
 - name: install pip packages to system python
   pip:
