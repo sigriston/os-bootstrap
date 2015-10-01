@@ -11,16 +11,19 @@
   when: ansible_user_shell != "/usr/local/bin/fish"
 
 - name: install oh-my-fish
-  shell: curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/tools/install.fish | fish
+  shell: curl -L github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | sh
   args:
-    creates: "{{ home }}/.oh-my-fish"
+    creates: "{{ home }}/.local/share/omf"
   ignore_errors: yes
 
 - name: create fish functions directory
   file: path="{{ home }}/.config/fish/functions" state=directory
 
-- name: link config.fish
-  file: path="{{ home }}/.config/fish/config.fish" src="{{ src_dir }}/dotfiles/fish/config.fish" state=link force=yes
+- name: link bundle
+  file: path="{{ home }}/.config/omf/bundle" src="{{ src_dir }}/dotfiles/fish/bundle" state=link force=yes
+
+- name: link init.fish
+  file: path="{{ home }}/.config/omf/init.fish" src="{{ src_dir }}/dotfiles/fish/init.fish" state=link force=yes
 
 - name: link fish functions
   file: path="{{ home }}/.config/fish/functions/{{ item }}.fish" src="{{ src_dir }}/dotfiles/fish/functions/{{ item }}.fish" state=link force=yes
