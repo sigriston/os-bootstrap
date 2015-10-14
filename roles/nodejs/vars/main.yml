@@ -1,6 +1,8 @@
 ---
+home: "{{ ansible_env.HOME }}"
+
 nodejs_versions:
-  - v4.1.1
+  - v4.2.1
 
 nodejs_packages:
   - babel
