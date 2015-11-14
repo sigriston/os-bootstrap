@@ -2,10 +2,11 @@
 home: "{{ ansible_env.HOME }}"
 
 nodejs_versions:
-  - v4.2.1
+  - v4.2.2
+  - v5.0.0
 
 nodejs_packages:
-  - babel
+  - babel-cli
   - bower
   - coffee-script
   - coffeelint
