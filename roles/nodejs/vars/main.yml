@@ -3,7 +3,7 @@ home: "{{ ansible_env.HOME }}"
 
 nodejs_versions:
   - v4.2.2
-  - v5.0.0
+  - v5.1.0
 
 nodejs_packages:
   - babel-cli
