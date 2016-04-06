@@ -2,8 +2,8 @@
 home: "{{ ansible_env.HOME }}"
 
 nodejs_versions:
-  - v4.2.4
-  - v5.4.0
+  - v4.4.2
+  - v5.10.1
 
 nodejs_packages:
   - bower
