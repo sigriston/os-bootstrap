@@ -2,10 +2,11 @@
 home: "{{ ansible_env.HOME }}"
 
 nodejs_versions:
-  - v4.4.2
-  - v5.10.1
+  - v4.4.7
+  - v6.2.2
 
 nodejs_packages:
+  - ava
   - bower
   - eslint
   - grunt-cli
