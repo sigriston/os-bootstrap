@@ -1,5 +1,7 @@
 ---
 font_packages:
+  - font-fira-code
+  - font-input
   - font-lato
   - font-muli
   - font-source-code-pro
