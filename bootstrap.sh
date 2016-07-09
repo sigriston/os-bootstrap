@@ -5,7 +5,7 @@
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Install homebrew-cask
-brew install caskroom/cask/brew-cask
+brew tap caskroom/cask
 
 # Install ansible
 brew install ansible
