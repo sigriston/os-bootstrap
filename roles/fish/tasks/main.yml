@@ -13,16 +13,8 @@
 - name: create fish functions directory
   file: path="{{ home }}/.config/fish/functions" state=directory
 
-- name: install fisherman
-  get_url: url=http://git.io/fisher dest="{{ home }}/.config/fish/functions/fisher.fish"
-
 - name: link fishfile
   file: path="{{ home }}/.config/fish/fishfile" src="{{ src_dir }}/dotfiles/fish/fishfile" state=link force=yes
-
-- name: install fisherman packages
-  shell: fisher
-  args:
-    executable: /usr/local/bin/fish
 
 - name: link fish functions
   file: path="{{ home }}/.config/fish/functions/{{ item }}.fish" src="{{ src_dir }}/dotfiles/fish/functions/{{ item }}.fish" state=link force=yes
@@ -30,3 +22,18 @@
     - ec
     - p
     - v
+
+- name: install fisherman
+  get_url: url=http://git.io/fisher dest="{{ home }}/.config/fish/functions/fisher.fish"
+
+- name: need pexpect for installing fisherman packages
+  easy_install: name=pexpect state=latest
+  become: yes
+
+- name: install fisherman packages
+  expect:
+    command: /usr/local/bin/fish -l -i
+    responses:
+      ">":
+        - fisher
+        - exit
