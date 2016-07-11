@@ -1,14 +1,18 @@
 ---
-- name: install macvim
-  homebrew: name=macvim state=latest install_options=custom-icons,override-system-vim
+- name: add neovim tap
+  homebrew_tap: tap=neovim/neovim state=present
 
-- name: link macvim under Applications
-  command: brew linkapps macvim --local
-  args:
-    creates: "{{ home }}/Applications/MacVim.app"
+- name: install neovim
+  homebrew: name=neovim state=latest
 
 - name: link .vimrc
   file: path="{{ home }}/.vimrc" src="{{ src_dir }}/dotfiles/vim/vimrc" state=link
 
 - name: link .gvimrc
   file: path="{{ home }}/.gvimrc" src="{{ src_dir }}/dotfiles/vim/gvimrc" state=link
+
+- name: create neovim config dir
+  file: path="{{ home }}/.config/nvim" state=directory
+
+- name: link init.vim (neovim)
+  file: path="{{ home }}/.config/nvim/init.vim" src="{{ src_dir }}/dotfiles/nvim/init.vim" state=link force=yes
