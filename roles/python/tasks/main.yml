@@ -7,7 +7,6 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ python_packages }}"
-  ignore_errors: yes
 
 - name: install python3
   homebrew: name=python3 state=latest
@@ -18,4 +17,3 @@
     state: latest
     executable: pip3
   with_items: "{{ python_packages }}"
-  ignore_errors: yes

@@ -1,11 +1,10 @@
 ---
 python_packages:
   - pip
-  - BeautifulSoup
+  - beautifulsoup4
   - Bottleneck
   - Cython
   - docutils
-  - GDAL
   - gnureadline
   - ipython
   - jedi
