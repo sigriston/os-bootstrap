@@ -1,9 +1,10 @@
 ---
-- name: install R, Rstudio
-  homebrew_cask: name="{{ item }}" state=present
-  with_items:
-    - r
-    - rstudio
+- name: install R
+  homebrew_cask: name=r state=present
+  become: yes
+
+- name: install Rstudio
+  homebrew_cask: name=rstudio state=present
 
 - name: obtain R library path
   command: Rscript -e '.libPaths()'
