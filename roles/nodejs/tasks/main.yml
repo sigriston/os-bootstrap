@@ -1,40 +1,19 @@
 ---
-- name: install ndenv
-  git: repo=http://github.com/riywo/ndenv dest="{{ home }}/.ndenv"
-
-- name: install node-build
-  git: repo=http://github.com/riywo/node-build dest="{{ home }}/.ndenv/plugins/node-build"
-
-- name: install node.js
-  shell: "ndenv install {{ item }}"
+- name: install node.js LTS
+  shell: "fnm use lts"
   args:
-    creates: "{{ ansible_env.HOME }}/.ndenv/versions/{{ item }}"
-  environment:
-    PATH: "{{ ansible_env.HOME }}/.ndenv/bin:{{ ansible_env.HOME }}/.ndenv/shims:{{ ansible_env.PATH }}"
-  with_items: "{{ nodejs_versions }}"
-  register: nodeJsInstall
+    executable: /usr/local/bin/fish
 
-- name: set default node version
-  shell: "ndenv global {{ nodejs_versions[0] }}"
-  environment:
-    PATH: "{{ ansible_env.HOME }}/.ndenv/bin:{{ ansible_env.HOME }}/.ndenv/shims:{{ ansible_env.PATH }}"
-  when: nodeJsInstall | changed
+# - name: install npm global packages
+#   npm:
+#     name: "{{ item }}"
+#     global: yes
+#     state: latest
+#     executable: "{{ home }}/.config/fnm/bin/npm"
+#   with_items: "{{ nodejs_packages }}"
 
 - name: install npm global packages
-  npm:
-    name: "{{ item[1] }}"
-    global: yes
-    state: latest
-    executable: "{{ ansible_env.HOME }}/.ndenv/versions/{{ item[0] }}/bin/npm"
-  environment:
-    PATH: "{{ ansible_env.HOME }}/.ndenv/bin:{{ ansible_env.HOME }}/.ndenv/shims:{{ ansible_env.PATH }}"
-  with_nested:
-    - "{{ nodejs_versions }}"
-    - "{{ nodejs_packages }}"
-
-- name: rehash ndenv shims
-  shell: "ndenv rehash"
+  shell: "npm install -g {{ item }}"
   args:
-    creates: "{{ ansible_env.HOME }}/.ndenv/shims/babel"
-  environment:
-    PATH: "{{ ansible_env.HOME }}/.ndenv/bin:{{ ansible_env.HOME }}/.ndenv/shims:{{ ansible_env.PATH }}"
+    executable: /usr/local/bin/fish
+  with_items: "{{ nodejs_packages }}"
