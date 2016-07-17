@@ -1,6 +1,6 @@
 ---
 cask_apps:
-  - adobe-photoshop-lightroom
+  - adobe-photoshop-lightroom571
   - clipmenu
   - controlplane
   - firefox
