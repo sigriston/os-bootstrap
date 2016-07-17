@@ -7,7 +7,8 @@
   become: yes
 
 - name: set user shell to fish
-  command: chsh -s /usr/local/bin/fish
+  command: chsh -s /usr/local/bin/fish "{{ ansible_user_id }}"
+  become: yes
   when: ansible_user_shell != "/usr/local/bin/fish"
 
 - name: create fish functions directory
@@ -25,10 +26,6 @@
 
 - name: install fisherman
   get_url: url=http://git.io/fisher dest="{{ home }}/.config/fish/functions/fisher.fish"
-
-- name: need pexpect for installing fisherman packages
-  easy_install: name=pexpect state=latest
-  become: yes
 
 - name: install fisherman packages
   expect:

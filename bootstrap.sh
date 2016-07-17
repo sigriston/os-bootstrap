@@ -11,6 +11,9 @@ brew linkapps python
 # Install homebrew-cask
 brew tap caskroom/cask
 
+# pexpect - needed for ansible 'expect' module
+pip install pexpect
+
 # Install ansible
 pip install ansible
 
