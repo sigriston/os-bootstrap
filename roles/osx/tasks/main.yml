@@ -1,0 +1,4 @@
+---
+- name: run osx setup script
+  script: osx.sh creates="{{ ansible_env.HOME }}/.osx"
+  notify: restart affected apps

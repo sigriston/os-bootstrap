@@ -1,0 +1,19 @@
+---
+- name: install latest python2
+  homebrew: name=python state=latest
+
+- name: install pip packages to python2
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ python_packages }}"
+
+- name: install python3
+  homebrew: name=python3 state=latest
+
+- name: install pip packages to python3
+  pip:
+    name: "{{ item }}"
+    state: latest
+    executable: pip3
+  with_items: "{{ python_packages }}"

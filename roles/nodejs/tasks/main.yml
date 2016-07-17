@@ -1,0 +1,19 @@
+---
+- name: install node.js LTS
+  shell: "fnm use lts"
+  args:
+    executable: /usr/local/bin/fish
+
+# - name: install npm global packages
+#   npm:
+#     name: "{{ item }}"
+#     global: yes
+#     state: latest
+#     executable: "{{ home }}/.config/fnm/bin/npm"
+#   with_items: "{{ nodejs_packages }}"
+
+- name: install npm global packages
+  shell: "npm install -g {{ item }}"
+  args:
+    executable: /usr/local/bin/fish
+  with_items: "{{ nodejs_packages }}"

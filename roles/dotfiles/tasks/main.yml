@@ -1,0 +1,9 @@
+---
+- name: make src dir
+  file: path="{{ src_dir }}" state=directory
+
+- name: clone dotfiles
+  git: repo=http://github.com/sigriston/dotfiles dest="{{ src_dir }}/dotfiles"
+
+- name: link .gitconfig
+  file: path="{{ home }}/.gitconfig" src="{{ src_dir }}/dotfiles/git/gitconfig" state=link

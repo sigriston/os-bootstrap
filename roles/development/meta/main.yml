@@ -1,0 +1,13 @@
+---
+dependencies:
+  - { role: dotfiles }
+  - { role: tools }
+  - { role: fonts }
+  - { role: fish }
+  - { role: apps }
+  - { role: vim }
+  - { role: python }
+  - { role: nodejs }
+  - { role: R }
+  - { role: prefs }
+  - { role: osx }

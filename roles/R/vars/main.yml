@@ -1,0 +1,21 @@
+---
+R_packages:
+  - brew
+  - data.table
+  - downloader
+  - dplyr
+  - ff
+  - ggplot2
+  - ggvis
+  - httr
+  - jsonlite
+  - lubridate
+  - qdap
+  - rlist
+  - RSQLite
+  - rvest
+  - showtext
+  - sqldf
+  - stringdist
+  - swirl
+  - tidyr

@@ -1,0 +1,30 @@
+---
+brew_packages:
+  - dockutil
+  - dos2unix
+  - editorconfig
+  - ffmpeg
+  - fzf
+  - gcc
+  - gdal
+  - git
+  - go
+  - highlight
+  - hub
+  - jmeter
+  - jq
+  - lynis
+  - mdbtools
+  - mosh
+  - pandoc
+  - pv
+  - readline
+  - sqlite
+  - the_platinum_searcher
+  - tmux
+  - tree
+  - unrar
+  - wget
+  - wine
+  - youtube-dl
+  - zopfli

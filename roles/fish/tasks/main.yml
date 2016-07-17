@@ -1,0 +1,36 @@
+---
+- name: install fish
+  homebrew: name=fish state=latest
+
+- name: add fish to /etc/shells
+  lineinfile: dest=/etc/shells line='/usr/local/bin/fish' state=present
+  become: yes
+
+- name: set user shell to fish
+  command: chsh -s /usr/local/bin/fish "{{ ansible_user_id }}"
+  become: yes
+  when: ansible_user_shell != "/usr/local/bin/fish"
+
+- name: create fish functions directory
+  file: path="{{ home }}/.config/fish/functions" state=directory
+
+- name: link fishfile
+  file: path="{{ home }}/.config/fish/fishfile" src="{{ src_dir }}/dotfiles/fish/fishfile" state=link force=yes
+
+- name: link fish functions
+  file: path="{{ home }}/.config/fish/functions/{{ item }}.fish" src="{{ src_dir }}/dotfiles/fish/functions/{{ item }}.fish" state=link force=yes
+  with_items:
+    - ec
+    - p
+    - v
+
+- name: install fisherman
+  get_url: url=http://git.io/fisher dest="{{ home }}/.config/fish/functions/fisher.fish"
+
+- name: install fisherman packages
+  expect:
+    command: /usr/local/bin/fish -l -i
+    responses:
+      ">":
+        - fisher
+        - exit

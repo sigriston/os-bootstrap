@@ -1,0 +1,19 @@
+---
+- name: install R
+  homebrew_cask: name=r state=present
+  become: yes
+
+- name: install Rstudio
+  homebrew_cask: name=rstudio state=present
+
+- name: obtain R library path
+  command: Rscript -e '.libPaths()'
+  register: rlp_out
+- name: set rlibpath fact
+  set_fact: rlibpath="{{ rlp_out.stdout | regex_replace('^\\[\\d+\\]\\s*\"(.*)\"$', '\\1') }}"
+
+- name: install R packages
+  command: Rscript -e "install.packages('{{ item }}', repos='http://cran.rstudio.com')"
+  args:
+    creates: "{{ rlibpath }}/{{ item }}"
+  with_items: "{{ R_packages }}"

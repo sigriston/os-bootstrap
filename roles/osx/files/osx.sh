@@ -41,8 +41,8 @@ dockutil --add "/Applications/Mail.app"
 dockutil --add "/Applications/Calendar.app"
 dockutil --add "/Applications/iTunes.app"
 dockutil --add "/Applications/App Store.app"
-dockutil --add "~/Applications/iTerm.app"
-dockutil --add "$(brew --prefix emacs-mac)/Emacs.app"
+dockutil --add "/Applications/iTerm.app"
+dockutil --add "/Applications/RStudio.app"
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
@@ -71,14 +71,5 @@ defaults write org.m0k.transmission WarningDonate -bool false
 # Hide the legal disclaimer
 defaults write org.m0k.transmission WarningLegal -bool false
 
-###############################################################################
-# Kill affected applications                                                  #
-###############################################################################
-
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-	"Dock" "Finder" "Google Chrome" "Google Chrome Canary" "Mail" "Messages" \
-	"Opera" "Safari" "SizeUp" "Spectacle" "SystemUIServer" "Terminal" \
-	"Transmission" "Twitter" "iCal"; do
-	killall "${app}" > /dev/null 2>&1
-done
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+# signal completion to ansible
+touch ~/.osx
