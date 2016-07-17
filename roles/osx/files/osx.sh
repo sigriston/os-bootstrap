@@ -41,8 +41,8 @@ dockutil --add "/Applications/Mail.app"
 dockutil --add "/Applications/Calendar.app"
 dockutil --add "/Applications/iTunes.app"
 dockutil --add "/Applications/App Store.app"
-dockutil --add "~/Applications/iTerm.app"
-dockutil --add "~/Applications/Emacs.app"
+dockutil --add "/Applications/iTerm.app"
+dockutil --add "/Applications/RStudio.app"
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1

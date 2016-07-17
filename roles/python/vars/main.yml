@@ -1,15 +1,10 @@
 ---
-python_versions:
-  - 2.7.10
-  - 3.4.3
-
 python_packages:
   - pip
-  - BeautifulSoup
+  - beautifulsoup4
   - Bottleneck
   - Cython
   - docutils
-  - GDAL
   - gnureadline
   - ipython
   - jedi

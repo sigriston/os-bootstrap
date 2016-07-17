@@ -10,6 +10,7 @@ R_packages:
   - httr
   - jsonlite
   - lubridate
+  - qdap
   - rlist
   - RSQLite
   - rvest

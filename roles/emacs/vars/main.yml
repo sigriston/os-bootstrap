@@ -1,3 +1,0 @@
----
-home: "{{ ansible_env.HOME }}"
-src_dir: "{{ ansible_env.HOME }}/src"
