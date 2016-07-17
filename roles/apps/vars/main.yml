@@ -1,28 +1,30 @@
 ---
 cask_apps:
-  - adobe-photoshop-lightroom
   - clipmenu
   - controlplane
   - firefox
   - flux
   - google-chrome
   - google-drive
-  - gpgtools
   - handbrake
   - iterm2
-  - java
   - julia
   - keyboard-cleaner
   - loading
   - macdown
-  - microsoft-office
   - namebench
   - packer
   - sequel-pro
   - skype
-  - spectacle
   - transmission
   - vagrant
   - virtualbox
   - vlc
   - xmind
+
+cask_apps_sudo:
+  - adobe-photoshop-lightroom
+  - gpgtools
+  - java
+  - microsoft-office
+  - spectacle

@@ -3,3 +3,9 @@
   homebrew_cask: name="{{ item }}" state=present
   with_items:
     - "{{ cask_apps }}"
+
+- name: install homebrew cask apps that require sudo
+  homebrew_cask: name="{{ item }}" state=present
+  become: yes
+  with_items:
+    - "{{ cask_apps_sudo }}"
