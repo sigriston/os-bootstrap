@@ -34,3 +34,10 @@
       ">":
         - fisher
         - exit
+
+- name: create fish conf.d directory
+  file: path="{{ home }}/.config/fish/conf.d" state=directory
+
+- name: link conf.d files
+  file: path="{{ home }}/.config/fish/conf.d/editor.fish" src="{{ src_dir }}/dotfiles/fish/conf.d/editor.fish" state=link force=yes
+
