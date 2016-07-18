@@ -1,0 +1,16 @@
+---
+- name: install tmux
+  homebrew: name=tmux state=latest
+
+- name: install tmuxinator
+  gem:
+    name: tmuxinator
+    user_install: no
+    state: latest
+  become: yes
+
+- name: link tmux.conf
+  file: path="{{ home }}/.tmux.conf" src="{{ src_dir }}/dotfiles/tmux/tmux.conf" state=link force=yes
+
+- name: install tmux plugin manager (tpm)
+  git: repo=https://github.com/tmux-plugins/tpm.git dest="{{ home }}/.tmux/plugins/tpm"

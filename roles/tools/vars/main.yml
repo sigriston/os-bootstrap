@@ -21,7 +21,6 @@ brew_packages:
   - readline
   - sqlite
   - the_platinum_searcher
-  - tmux
   - tree
   - unrar
   - wget
