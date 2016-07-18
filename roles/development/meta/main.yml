@@ -8,6 +8,7 @@ dependencies:
   - { role: vim }
   - { role: python }
   - { role: nodejs }
+  - { role: ruby }
   - { role: R }
   - { role: prefs }
   - { role: osx }
