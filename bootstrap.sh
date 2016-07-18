@@ -1,8 +1,10 @@
 #!/bin/sh -e
 
 
-# Install homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# Install homebrew if not present
+if ! type 'brew' > /dev/null; then
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
 # Install Python 2 from homebrew
 brew install python
