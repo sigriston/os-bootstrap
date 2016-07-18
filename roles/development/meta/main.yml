@@ -4,6 +4,7 @@ dependencies:
   - { role: tools }
   - { role: fonts }
   - { role: fish }
+  - { role: tmux }
   - { role: apps }
   - { role: vim }
   - { role: python }
