@@ -16,6 +16,7 @@ python_packages:
   - matplotlib
   - mistune
   - mock
+  - neovim
   - nose
   - numexpr
   - numpy
