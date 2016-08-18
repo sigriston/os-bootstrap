@@ -1,7 +1,6 @@
 ---
 - name: install R
-  homebrew_cask: name=r state=present
-  become: yes
+  homebrew: name=r state=present
 
 - name: install Rstudio
   homebrew_cask: name=rstudio state=present
