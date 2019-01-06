@@ -20,4 +20,4 @@ pip install pexpect
 pip install ansible
 
 # Now run ansible playbook and be happy!
-ansible-playbook -i hosts --ask-become-pass playbook.yml
+ansible-playbook -i hosts --ask-become-pass osx-playbook.yml

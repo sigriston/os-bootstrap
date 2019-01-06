@@ -1,0 +1,23 @@
+---
+- name: Check if yay is installed
+  command: which yay
+  ignore_errors: yes
+  register: yay_installed
+
+- name: Download yay AUR package
+  git:
+    repo: 'https://aur.archlinux.org/yay.git'
+    dest: /tmp/os-bootstrap/yay
+    depth: 1
+  become: yes
+  become_user: "{{ mainuser['name'] }}"
+  when: yay_installed is failed
+  register: yay_downloaded
+
+- name: Build and install yay
+  command: makepkg -si --noconfirm
+  args:
+    chdir: /tmp/os-bootstrap/yay
+  become: yes
+  become_user: "{{ mainuser['name'] }}"
+  when: yay_installed is failed
