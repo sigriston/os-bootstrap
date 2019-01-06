@@ -9,8 +9,6 @@
     repo: 'https://aur.archlinux.org/yay.git'
     dest: /tmp/os-bootstrap/yay
     depth: 1
-  become: yes
-  become_user: "{{ mainuser['name'] }}"
   when: yay_installed is failed
   register: yay_downloaded
 
@@ -18,6 +16,4 @@
   command: makepkg -si --noconfirm
   args:
     chdir: /tmp/os-bootstrap/yay
-  become: yes
-  become_user: "{{ mainuser['name'] }}"
   when: yay_installed is failed
