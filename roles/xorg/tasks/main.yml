@@ -1,0 +1,53 @@
+---
+- name: Install xorg
+  package:
+    name: xorg
+    state: present
+  become: yes
+
+- name: Install Intel graphics driver
+  package:
+    name: xf86-video-intel
+    state: present
+  become: yes
+
+- name: Install mesa
+  package:
+    name: mesa
+    state: present
+  become: yes
+
+- name: Install bspwm
+  package:
+    name: bspwm
+    state: present
+  become: yes
+
+- name: Install sxhkd
+  package:
+    name: sxhkd
+    state: present
+  become: yes
+
+# TODO:
+# - name: Install polybar
+# command: yay -Sy polybar --nouseask
+
+- name: Install lightdm
+  package:
+    name: lightdm
+    state: present
+  become: yes
+
+- name: Install lightdm-gtk-greeter
+  package:
+    name: lightdm-gtk-greeter
+    state: present
+  become: yes
+
+- name: Enable and start lightdm
+  service:
+    name: lightdm
+    state: started
+    enabled: yes
+  become: yes
