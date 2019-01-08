@@ -2,3 +2,4 @@
 dependencies:
   - { role: aur }
   - { role: xorg }
+  - { role: fonts }

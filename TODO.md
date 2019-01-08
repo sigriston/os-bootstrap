@@ -10,7 +10,6 @@
 	- rofi: need to create dir `~/.config/rofi`
 	- vim: need to create dir `~/.config/nvim`, install base16-vim and source `~/.config/nvim/colorscheme.vim`
 	- future: extend base16-manager to work with iTerm2? ([ref](https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli)).
-- install proper X fonts
 - set natural scroll direction
 - set proper caps=ctrl key (`setxkbmap -option ctrl:nocaps`?)
 	- future: keyboard layout switching?
@@ -24,3 +23,6 @@
 - future: multiple monitors?
 - compton
 - xsel / xclip
+
+## DONE
+- install proper X fonts

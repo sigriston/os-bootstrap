@@ -1,5 +1,5 @@
 ---
-font_packages:
+mac_font_packages:
   - font-fira-code
   - font-input
   - font-lato
@@ -7,3 +7,26 @@ font_packages:
   - font-source-code-pro
   - font-source-sans-pro
   - font-source-serif-pro
+
+arch_font_packages:
+  - noto-fonts
+  - noto-fonts-cjk
+  - noto-fonts-emoji
+  - noto-fonts-extra
+  - ttf-croscore
+  - ttf-dejavu
+  - ttf-droid
+  - ttf-liberation
+  - ttf-roboto
+
+arch_bitmap_font_packages:
+  - dina-font
+  - artwiz-fonts
+  - tamsyn-font
+  - terminus-font
+
+arch_prog_ttf_font_packages:
+  - ttf-anonymous-pro
+  - ttf-fira-mono
+  - ttf-hack
+  - ttf-inconsolata
