@@ -29,6 +29,35 @@
     state: present
   become: yes
 
+- name: Install rofi
+  package:
+    name: rofi
+    state: present
+  become: yes
+
+- name: Install urxvt
+  package:
+    name: rxvt-unicode
+    state: present
+  become: yes
+
+- name: create bspwm config dirs
+  file:
+    path: "{{ ansible_env.HOME }}/.config/{{ item }}"
+    state: directory
+  with_items:
+    - bspwm
+    - sxhkd
+
+- name: copy bspwm configuration
+  copy:
+    src: "{{ item }}rc"
+    dest: "{{ ansible_env.HOME }}/.config/{{ item }}/{{ item }}rc"
+    mode: 0755
+  with_items:
+    - bspwm
+    - sxhkd
+
 # TODO:
 # - name: Install polybar
 # command: yay -Sy polybar --nouseask
