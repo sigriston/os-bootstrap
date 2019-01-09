@@ -23,6 +23,20 @@
     state: present
   become: yes
 
+- name: Modify Compose locale files with Ccedilla
+  lineinfile:
+    path: /usr/share/X11/locale/en_US.UTF-8/Compose
+    regexp: '^<dead_acute> <C>'
+    line: '<dead_acute> <C>                 	: "Ç"   Ccedilla # LATIN CAPITAL LETTER C WITH CEDILLA'
+  become: yes
+
+- name: Modify Compose locale files with ccedilla
+  lineinfile:
+    path: /usr/share/X11/locale/en_US.UTF-8/Compose
+    regexp: '^<dead_acute> <c>'
+    line: '<dead_acute> <c>                 	: "ç"   ccedilla # LATIN SMALL LETTER C WITH CEDILLA'
+  become: yes
+
 - name: Install sxhkd
   package:
     name: sxhkd

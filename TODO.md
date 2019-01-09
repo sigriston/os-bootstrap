@@ -26,3 +26,4 @@
 
 ## DONE
 - install proper X fonts
+- fix cedilla for `en_US.UTF-8` locale
