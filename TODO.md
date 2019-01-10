@@ -20,10 +20,10 @@
 - actually detect intel graphics vs virtualbox on xorg install
 - future: multiple monitors?
 - compton
-- xsel / xclip
 
 ## DONE
 - install proper X fonts
 - fix cedilla for `en_US.UTF-8` locale
 - set proper caps=ctrl key (`setxkbmap -option ctrl:swapcaps,caps:hyper`?)
   - future: keyboard layout switching?
+- xsel

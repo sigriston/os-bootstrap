@@ -17,9 +17,9 @@
     state: present
   become: yes
 
-- name: Install bspwm
+- name: Install xsel
   package:
-    name: bspwm
+    name: xsel
     state: present
   become: yes
 
@@ -41,6 +41,12 @@
   command: /usr/bin/localectl --no-convert --no-ask-password set-x11-keymap us,us pc105 ,intl grp:shifts_toggle,ctrl:swapcaps,caps:hyper
   args:
     creates: /etc/X11/xorg.conf.d/00-keyboard.conf
+  become: yes
+
+- name: Install bspwm
+  package:
+    name: bspwm
+    state: present
   become: yes
 
 - name: Install sxhkd
