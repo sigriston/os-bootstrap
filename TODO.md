@@ -15,7 +15,6 @@
   - check out [arch wiki](https://wiki.archlinux.org/index.php/intel_graphics#Tearing)
 - seamless boot with plymouth
 - lightdm wallpaper
-- user wallpaper
 - actually detect intel graphics vs virtualbox on xorg install
 - future: multiple monitors?
 
@@ -27,3 +26,4 @@
 - xsel
 - compton
 - set natural scroll direction
+- user wallpaper

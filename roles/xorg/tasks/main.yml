@@ -118,3 +118,15 @@
     state: started
     enabled: yes
   become: yes
+
+- name: Install feh
+  package:
+    name: feh
+    state: present
+  become: yes
+
+- name: Install archlinux-wallpaper
+  package:
+    name: archlinux-wallpaper
+    state: present
+  become: yes
