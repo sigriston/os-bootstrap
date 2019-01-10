@@ -49,6 +49,12 @@
     creates: /etc/X11/xorg.conf.d/00-keyboard.conf
   become: yes
 
+- name: Set proper touchpad configuration
+  copy:
+    src: 30-touchpad.conf
+    dest: /etc/X11/xorg.conf.d/30-touchpad.conf
+  become: yes
+
 - name: Install bspwm
   package:
     name: bspwm

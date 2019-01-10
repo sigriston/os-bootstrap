@@ -10,7 +10,6 @@
   - rofi: need to create dir `~/.config/rofi`
   - vim: need to create dir `~/.config/nvim`, install base16-vim and source `~/.config/nvim/colorscheme.vim`
   - future: extend base16-manager to work with iTerm2? ([ref](https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli)).
-- set natural scroll direction
 - enable media controls (volume etc) from keyboard
 - intel graphics screen tearing on scroll?
   - check out [arch wiki](https://wiki.archlinux.org/index.php/intel_graphics#Tearing)
@@ -27,3 +26,4 @@
   - future: keyboard layout switching?
 - xsel
 - compton
+- set natural scroll direction
