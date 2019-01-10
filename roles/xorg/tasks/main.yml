@@ -17,6 +17,12 @@
     state: present
   become: yes
 
+- name: Install compton
+  package:
+    name: compton
+    state: present
+  become: yes
+
 - name: Install xsel
   package:
     name: xsel

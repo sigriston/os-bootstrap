@@ -19,7 +19,6 @@
 - user wallpaper
 - actually detect intel graphics vs virtualbox on xorg install
 - future: multiple monitors?
-- compton
 
 ## DONE
 - install proper X fonts
@@ -27,3 +26,4 @@
 - set proper caps=ctrl key (`setxkbmap -option ctrl:swapcaps,caps:hyper`?)
   - future: keyboard layout switching?
 - xsel
+- compton
