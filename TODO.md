@@ -14,7 +14,6 @@
 - intel graphics screen tearing on scroll?
   - check out [arch wiki](https://wiki.archlinux.org/index.php/intel_graphics#Tearing)
 - seamless boot with plymouth
-- lightdm wallpaper
 - actually detect intel graphics vs virtualbox on xorg install
 - future: multiple monitors?
 
@@ -27,3 +26,4 @@
 - compton
 - set natural scroll direction
 - user wallpaper
+- lightdm wallpaper

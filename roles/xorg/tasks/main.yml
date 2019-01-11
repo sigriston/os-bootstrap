@@ -130,3 +130,17 @@
     name: archlinux-wallpaper
     state: present
   become: yes
+
+- name: Set lightdm wallpaper
+  lineinfile:
+    path: /etc/lightdm/lightdm-gtk-greeter.conf
+    regexp: '^#?background='
+    line: 'background=/usr/share/archlinux/wallpaper/archlinux-ekisho-carbonite.jpg'
+  become: yes
+
+- name: Set lightdm position
+  lineinfile:
+    path: /etc/lightdm/lightdm-gtk-greeter.conf
+    regexp: '^#?position='
+    line: 'position=30%,center 50%,center'
+  become: yes
