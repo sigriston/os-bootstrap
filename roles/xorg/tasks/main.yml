@@ -101,11 +101,10 @@
   args:
     creates: /usr/bin/polybar
 
-# TODO: copy polybar config
-# - name: copy bspwm configuration
-#   copy:
-#     src: polybar
-#     dest: "{{ ansible_env.HOME }}/.config/polybar/config"
+- name: copy polybar configuration
+  copy:
+    src: polybar
+    dest: "{{ ansible_env.HOME }}/.config/polybar/config"
 
 - name: Install lightdm
   package:

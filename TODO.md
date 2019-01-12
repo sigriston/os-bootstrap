@@ -2,9 +2,6 @@
 
 - automate actual install parts (like UEFI / EFISTUB setup)
 
-- polybar config
-  - polybar color emoji
-  - polybar startup
 - audio
 - set sudo pacman to not ask for password from wheel
 - install base16-manager with Xresources, rofi, vim
@@ -30,3 +27,5 @@
 - user wallpaper
 - lightdm wallpaper
 - install polybar actually
+- polybar config
+  - polybar startup

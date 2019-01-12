@@ -2,6 +2,7 @@
 
 compton &
 sxhkd &
+polybar top -r &
 
 feh --bg-fill /usr/share/archlinux/wallpaper/archlinux-poison.jpg
 
