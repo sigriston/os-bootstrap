@@ -43,7 +43,7 @@ font-2 = Font Awesome 5 Brands:style=Regular:size=10:antialias=true;2
 
 modules-left = bspwm
 modules-center = xwindow
-modules-right = filesystem xkeyboard cpu memory eth wifi battery date
+modules-right = filesystem xkeyboard cpu memory eth wifi volume battery date
 
 tray-position = right
 tray-padding = 2
@@ -199,32 +199,17 @@ format-underline = #0a6cf5
 label = %date% %time%
 
 [module/volume]
-type = internal/volume
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+type = internal/pulseaudio
+use-ui-max = true
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = #f50a4d
+label-muted =  muted
+format-muted-underline = #f50a4d
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
 
 [module/battery]
 type = internal/battery
