@@ -2,9 +2,11 @@
 
 - automate actual install parts (like UEFI / EFISTUB setup)
 
+- polybar config
+  - polybar color emoji
+  - polybar startup
+- audio
 - set sudo pacman to not ask for password from wheel
-- install polybar actually
-  - color emoji
 - install base16-manager with Xresources, rofi, vim
   - Xresources: need to create dir `~/.Xresources.d`
   - rofi: need to create dir `~/.config/rofi`
@@ -27,3 +29,4 @@
 - set natural scroll direction
 - user wallpaper
 - lightdm wallpaper
+- install polybar actually

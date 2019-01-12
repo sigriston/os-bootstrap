@@ -96,9 +96,16 @@
     - bspwm
     - sxhkd
 
-# TODO:
-# - name: Install polybar
-# command: yay -Sy polybar --nouseask
+- name: Install polybar
+  command: yay -S --noconfirm polybar
+  args:
+    creates: /usr/bin/polybar
+
+# TODO: copy polybar config
+# - name: copy bspwm configuration
+#   copy:
+#     src: polybar
+#     dest: "{{ ansible_env.HOME }}/.config/polybar/config"
 
 - name: Install lightdm
   package:
