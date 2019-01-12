@@ -29,3 +29,4 @@
 - polybar config
   - polybar startup
 - audio
+- tamzen bitmap font

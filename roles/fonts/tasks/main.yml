@@ -31,3 +31,8 @@
   become: yes
   with_items: "{{ arch_prog_ttf_font_packages }}"
   when: ansible_os_family == 'Archlinux'
+
+- name: Install tamzen bitmap font
+  command: yay -S --noconfirm tamzen-font
+  args:
+    creates: /usr/share/fonts/local/TamzenForPowerline6x12r.bdf
