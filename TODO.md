@@ -1,9 +1,8 @@
 # TODO: Arch Linux ansible bootstrap setup
 
 - automate actual install parts (like UEFI / EFISTUB setup)
-
-- audio
 - set sudo pacman to not ask for password from wheel
+
 - install base16-manager with Xresources, rofi, vim
   - Xresources: need to create dir `~/.Xresources.d`
   - rofi: need to create dir `~/.config/rofi`
@@ -29,3 +28,4 @@
 - install polybar actually
 - polybar config
   - polybar startup
+- audio

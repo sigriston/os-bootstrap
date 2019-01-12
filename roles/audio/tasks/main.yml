@@ -1,0 +1,12 @@
+---
+- name: Install pulseaudio
+  package:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+    - pulseaudio
+    - pulseaudio-alsa
+    - pulseaudio-bluetooth
+    - pulseaudio-equalizer
+    - pulsemixer
