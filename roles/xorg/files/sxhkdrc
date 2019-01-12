@@ -119,3 +119,13 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# volume / media keys
+XF86AudioLowerVolume
+	sh -c "pactl set-sink-mute @DEFAULT_SINK@ false; pactl set-sink-volume @DEFAULT_SINK@ -5%"
+
+XF86AudioRaiseVolume
+	sh -c "pactl set-sink-mute @DEFAULT_SINK@ false; pactl set-sink-volume @DEFAULT_SINK@ +5%"
+
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
