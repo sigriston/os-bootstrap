@@ -43,7 +43,7 @@ font-2 = Font Awesome 5 Brands:style=Regular:size=10:antialias=true;2
 
 modules-left = bspwm
 modules-center = xwindow
-modules-right = filesystem xkeyboard cpu memory eth wifi volume battery date
+modules-right = filesystem xkeyboard cpu memory eth wifi backlight volume battery date
 
 tray-position = right
 tray-padding = 2
@@ -112,27 +112,14 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-[module/xbacklight]
+[module/backlight]
 type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
 card = intel_backlight
+interval = 2
+format = <label>
+format-prefix = " "
+format-underline = #55aa55
+label = %percentage%%
 
 [module/cpu]
 type = internal/cpu

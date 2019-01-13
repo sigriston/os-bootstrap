@@ -3,6 +3,8 @@
 - automate actual install parts (like UEFI / EFISTUB setup)
 - set sudo pacman to not ask for password from wheel
 
+- thinkfan
+- tlp?
 - install base16-manager with Xresources, rofi, vim
   - Xresources: need to create dir `~/.Xresources.d`
   - rofi: need to create dir `~/.config/rofi`
@@ -30,3 +32,5 @@
 - audio
 - tamzen bitmap font
 - enable media controls (volume etc) from keyboard
+- battery indicator
+- backlight controls

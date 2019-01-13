@@ -120,6 +120,10 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+#
+# keyboard special keys
+#
+
 # volume / media keys
 XF86AudioLowerVolume
 	sh -c "pactl set-sink-mute @DEFAULT_SINK@ false; pactl set-sink-volume @DEFAULT_SINK@ -5%"
@@ -129,3 +133,10 @@ XF86AudioRaiseVolume
 
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# backlight
+XF86MonBrightnessDown
+  xbacklight -dec 10
+
+XF86MonBrightnessUp
+  xbacklight -inc 10
