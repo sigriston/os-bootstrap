@@ -1,0 +1,13 @@
+---
+- name: Load kernel drivers at boot
+  lineinfile:
+    path: /etc/mkinitcpio.conf
+    regexp: '^MODULES='
+    line: 'MODULES=(i915)'
+  become: yes
+  register: modules_list
+
+- name: Remake init ram cpio image
+  command: mkinitcpio -p linux
+  become: yes
+  when: modules_list is changed

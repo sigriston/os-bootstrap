@@ -1,0 +1,12 @@
+---
+- name: Install thinkfan
+  command: yay -S --noconfirm thinkfan-git
+  args:
+    creates: /usr/bin/thinkfan
+  become: yes
+
+- name: copy thinkfan configuration
+  copy:
+    src: thinkfan.conf
+    dest: /etc/thinkfan.conf
+  become: yes

@@ -1,6 +1,8 @@
 ---
 dependencies:
+  - { role: modules }
   - { role: aur }
+  - { role: power }
   - { role: xorg }
   - { role: fonts }
   - { role: audio }
