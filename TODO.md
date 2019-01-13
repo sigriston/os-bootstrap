@@ -3,8 +3,6 @@
 - automate actual install parts (like UEFI / EFISTUB setup)
 - set sudo pacman to not ask for password from wheel
 
-- hardware-accelerated video?
-- mpv
 - install base16-manager with Xresources, rofi, vim
   - Xresources: need to create dir `~/.Xresources.d`
   - rofi: need to create dir `~/.config/rofi`
@@ -36,3 +34,5 @@
 - backlight controls
 - load i915 module early at boot
 - thinkfan
+- hardware-accelerated video?
+- mpv
