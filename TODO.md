@@ -36,3 +36,7 @@
 - thinkfan
 - hardware-accelerated video?
 - mpv
+- add cpupower and powertop
+- add config to systemd so that:
+  - powersave governor when on battery
+  - performance governor when on AC

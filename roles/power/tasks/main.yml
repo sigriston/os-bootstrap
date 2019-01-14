@@ -10,3 +10,18 @@
     src: thinkfan.conf
     dest: /etc/thinkfan.conf
   become: yes
+
+- name: Install power-related tools
+  package:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+    - cpupower
+    - powertop
+
+- name: Add udev rules to use performance governor on AC power
+  copy:
+    src: 80-power-governor.rules
+    dest: /etc/udev/rules.d/80-power-governor.rules
+  become: yes
