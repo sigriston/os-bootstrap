@@ -3,6 +3,7 @@
 - automate actual install parts (like UEFI / EFISTUB setup)
 - set sudo pacman to not ask for password from wheel
 
+- fish fish fish fish fish `><>`
 - keyboard layout: `caps:hyper` not working with `ctrl:swapcaps` as well.
   Should make one of the Ctrl keys work as Hyper in order to have another
   modifier for `sxhkd`.
@@ -12,7 +13,6 @@
   - use `urxvtd` and `urxvtc`
   - set transparency
 - "command not found" stuff
-- install dunst for notifications
 - install base16-manager with Xresources, rofi, vim
   - Xresources: need to create dir `~/.Xresources.d`
   - rofi: need to create dir `~/.config/rofi`
@@ -55,3 +55,4 @@
   - powersave governor when on battery
   - performance governor when on AC
 - screen lock
+- install dunst for notifications

@@ -3,6 +3,7 @@
 compton &
 sxhkd &
 polybar top -r &
+dunst &
 
 feh --bg-fill /usr/share/archlinux/wallpaper/archlinux-poison.jpg
 

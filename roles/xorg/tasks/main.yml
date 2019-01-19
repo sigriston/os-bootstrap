@@ -137,6 +137,22 @@
     state: present
   become: yes
 
+- name: Install dunst
+  package:
+    name: dunst
+    state: present
+  become: yes
+
+- name: create dunst config dirs
+  file:
+    path: "{{ ansible_env.HOME }}/.config/dunst"
+    state: directory
+
+- name: copy dunst configuration
+  copy:
+    src: "dunstrc"
+    dest: "{{ ansible_env.HOME }}/.config/dunst/dunstrc"
+
 - name: Install mpv
   package:
     name: mpv
