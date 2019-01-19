@@ -11,7 +11,6 @@
   - load tamzen without Xft?
   - use `urxvtd` and `urxvtc`
   - set transparency
-- "command not found" stuff
 - install base16-manager with Xresources, rofi, vim
   - Xresources: need to create dir `~/.Xresources.d`
   - rofi: need to create dir `~/.config/rofi`
@@ -57,3 +56,4 @@
 - install dunst for notifications
 - dotfiles
 - fish fish fish fish fish `><>`
+- "command not found" stuff

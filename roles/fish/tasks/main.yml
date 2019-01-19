@@ -43,3 +43,16 @@
   with_items:
     - editor.fish
     - git.fish
+
+- name: install pkgfile (cmd not found hook)
+  package:
+    name: pkgfile
+    state: present
+  become: yes
+  when: ansible_os_family == 'Archlinux'
+  register: install_pkgfile
+
+- name: update pkgfile database
+  command: pkgfile -u
+  become: yes
+  when: install_pkgfile is changed
