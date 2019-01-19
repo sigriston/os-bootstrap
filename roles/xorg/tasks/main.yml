@@ -79,6 +79,11 @@
     state: present
   become: yes
 
+- name: create rofi config dir
+  file:
+    path: "{{ ansible_env.HOME }}/.config/rofi"
+    state: directory
+
 - name: Install urxvt
   package:
     name: rxvt-unicode
@@ -130,6 +135,21 @@
     state: started
     enabled: yes
   become: yes
+
+- name: copy .Xresources
+  copy:
+    src: "Xresources"
+    dest: "{{ ansible_env.HOME }}/.Xresources"
+
+- name: create .Xresources.d
+  file:
+    path: "{{ ansible_env.HOME }}/.Xresources.d"
+    state: directory
+
+- name: copy .Xresources.d/urxvt
+  copy:
+    src: "Xresources.d/urxvt"
+    dest: "{{ ansible_env.HOME }}/.Xresources.d/urxvt"
 
 - name: Install feh
   package:

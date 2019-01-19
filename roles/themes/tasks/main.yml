@@ -1,0 +1,30 @@
+---
+- name: install base16-manager (Arch)
+  command: yay -S --noconfirm base16-manager
+  args:
+    creates: /usr/local/bin/base16-manager
+  when: ansible_os_family == 'Archlinux'
+
+- name: tap base16-manager (macOS)
+  homebrew_tap: tap=chrokh/tap state=present
+  when: ansible_os_family == 'Darwin'
+
+- name: install base16-manager (macOS)
+  homebrew: name=base16-manager state=present
+  when: ansible_os_family == 'Darwin'
+
+- name: install base16-manager templates
+  command: "base16-manager install {{ item }}"
+  args:
+    creates: "{{ home }}/.base16-manager/{{ item }}"
+  with_items: "{{ base16_manager_templates_macos if ansible_os_family == 'Darwin' else base16_manager_templates_linux }}"
+  register: base16_manager_installed
+
+- name: set base16-manager default theme
+  command: "base16-manager set {{ base16_manager_theme }}"
+  when: base16_manager_installed is changed
+
+- name: ensure colors are imported in .Xresources
+  lineinfile:
+    path: "{{ home }}/.Xresources"
+    line: '#include ".Xresources.d/colors"'

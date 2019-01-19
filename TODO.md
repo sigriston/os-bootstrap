@@ -11,13 +11,7 @@
   - load tamzen without Xft?
   - use `urxvtd` and `urxvtc`
   - set transparency
-- install base16-manager with Xresources, rofi, vim
-  - Xresources: need to create dir `~/.Xresources.d`
-  - rofi: need to create dir `~/.config/rofi`
-  - vim: need to create dir `~/.config/nvim`, install base16-vim and source `~/.config/nvim/colorscheme.vim`
-  - polybar: use Xresources colors
-  - dunst!
-  - future: extend base16-manager to work with iTerm2? ([ref](https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli)).
+- future: extend base16-manager to work with iTerm2? ([ref](https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli)).
 - deepin wallpapers (they have a banging one with trees that will probably look
   good with gruvbox)
 - intel graphics screen tearing on scroll?
@@ -57,3 +51,9 @@
 - dotfiles
 - fish fish fish fish fish `><>`
 - "command not found" stuff
+- install base16-manager with Xresources, rofi, vim
+  - Xresources: need to create dir `~/.Xresources.d`
+  - rofi: need to create dir `~/.config/rofi`
+  - vim need to create dir `~/.config/nvim`, install base16-vim and source `~/.config/nvim/colorscheme.vim`
+  - polybar: use Xresources colors
+  - dunst!

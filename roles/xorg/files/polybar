@@ -8,18 +8,19 @@
 ;=====================================================
 
 [colors]
-background = #80000000
-background-alt = #e0000000
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+background = ${xrdb:background:#000}
+background-alt = ${xrdb:color10:#333}
+background-sel = ${xrdb:color11:#444}
+foreground = ${xrdb:foreground:#dfdfdf}
+foreground-off = ${xrdb:color8:#555}
+primary = ${xrdb:color3:#ffb52a}
+secondary = ${xrdb:color9:#e60053}
+alert = ${xrdb:color1:#bd2c40}
 
 [bar/top]
 monitor = "LVDS1"
 width = 100%
-height = 24
+height = 18
 fixed-center = false
 
 background = ${colors.background}
@@ -32,14 +33,14 @@ border-size = 0
 border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Droid Sans:size=10:antialias=true;2
-font-1 = Font Awesome 5 Free:style=Solid:size=10:antialias=true;2
-font-2 = Font Awesome 5 Brands:style=Regular:size=10:antialias=true;2
+font-0 = Noto Sans:style=Condensed:size=8:antialias=true
+font-1 = Font Awesome 5 Free:style=Solid:size=8:antialias=true
+font-2 = Font Awesome 5 Brands:style=Regular:size=8:antialias=true
 
 modules-left = bspwm
 modules-center = xwindow
@@ -50,9 +51,41 @@ tray-padding = 2
 
 wm-restack = bspwm
 
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background-sel}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-off}
+label-empty-padding = 2
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+mount-1 = /home
+
+label-mounted =  %mountpoint%: %percentage_used%%
+label-mounted-underline = ${xrdb:color4:#0a81f5}
+label-unmounted = %mountpoint%
+label-unmounted-foreground = ${colors.foreground-off}
+label-unmounted-underline = ${colors.foreground-off}
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -69,64 +102,14 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted =  %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
-
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-[module/backlight]
-type = internal/xbacklight
-card = intel_backlight
-interval = 2
-format = <label>
-format-prefix = " "
-format-underline = #55aa55
-label = %percentage%%
+label-indicator-foreground = ${colors.foreground-off}
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
-format-underline = #f90000
+format-underline = ${xrdb:color6:#4bffdc}
 label = %percentage%%
 
 [module/memory]
@@ -134,7 +117,7 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
-format-underline = #4bffdc
+format-underline = ${colors.alert}
 label = %gb_used% (%percentage_used%%)
 
 [module/eth]
@@ -142,7 +125,7 @@ type = internal/network
 interface = enp0s25
 interval = 3.0
 
-format-connected-underline = #55aa55
+format-connected-underline = ${xrdb:color2:#55aa55}
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground}
 label-connected = %local_ip%
@@ -151,14 +134,14 @@ format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+;label-disconnected-foreground = ${colors.foreground-off}
 
 [module/wifi]
 type = internal/network
 interface = wlp3s0
 interval = 3.0
 
-format-connected-underline = #55aa55
+format-connected-underline = ${xrdb:color2:#55aa55}
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground}
 label-connected = %essid%  %signal%%  %local_ip%
@@ -167,31 +150,24 @@ format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+;label-disconnected-foreground = ${colors.foreground-off}
 
-[module/date]
-type = internal/date
-interval = 5
-
-date =
-date-alt = " %Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground}
-format-underline = #0a6cf5
-
-label = %date% %time%
+[module/backlight]
+type = internal/xbacklight
+card = intel_backlight
+interval = 2
+format = <label>
+format-prefix = " "
+format-underline = ${xrdb:color5:#55aa55}
+label = %percentage%%
 
 [module/volume]
 type = internal/pulseaudio
 use-ui-max = true
 format-volume = <ramp-volume> <label-volume>
-format-volume-underline = #f50a4d
+format-volume-underline = ${colors.alert}
 label-muted =  muted
-format-muted-underline = #f50a4d
+format-muted-underline = ${colors.foreground-off}
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
@@ -205,7 +181,7 @@ adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = ${colors.primary}
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
@@ -229,6 +205,40 @@ animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 750
 
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${xrdb:color4:#0a81f5}
+
+label = %date% %time%
+
+
+;;;;;;;;;;
+; unused ;
+;;;;;;;;;;
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -241,12 +251,12 @@ format-warn-underline = ${self.format-underline}
 
 label = %temperature%
 label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = ${colors.alert}
 
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${colors.foreground-off}
 
 [module/powermenu]
 type = custom/menu
@@ -258,7 +268,7 @@ label-open-foreground = ${colors.secondary}
 label-close = 
 label-close-foreground = ${colors.secondary}
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = ${colors.foreground-off}
 
 menu-0-0 = 
 menu-0-0-exec = menu-open-1

@@ -1,0 +1,13 @@
+---
+home: "{{ ansible_env.HOME }}"
+
+base16_manager_templates_linux:
+  - 'chriskempson/base16-vim'
+  - 'chriskempson/base16-xresources'
+  - '0xdec/base16-rofi'
+  - 'khamer/base16-dunst'
+
+base16_manager_templates_macos:
+  - 'chriskempson/base16-vim'
+
+base16_manager_theme: 'gruvbox-dark-hard'
