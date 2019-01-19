@@ -153,6 +153,12 @@
     src: "dunstrc"
     dest: "{{ ansible_env.HOME }}/.config/dunst/dunstrc"
 
+- name: Install libnotify
+  package:
+    name: libnotify
+    state: present
+  become: yes
+
 - name: Install mpv
   package:
     name: mpv

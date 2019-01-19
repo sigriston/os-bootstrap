@@ -1,35 +1,35 @@
 ---
 - name: install fish
-  homebrew: name=fish state=latest
+  package:
+    name: fish
+    state: present
+  become: "{{ 'no' if ansible_os_family == 'Darwin' else 'yes' }}"
+
+- name: find fishs path
+  command: which fish
+  register: which_fish
 
 - name: add fish to /etc/shells
-  lineinfile: dest=/etc/shells line='/usr/local/bin/fish' state=present
+  lineinfile: dest=/etc/shells line="{{ which_fish.stdout }}" state=present
   become: yes
 
 - name: set user shell to fish
-  command: chsh -s /usr/local/bin/fish "{{ ansible_user_id }}"
+  command: chsh -s "{{ which_fish.stdout }}" "{{ ansible_user_id }}"
   become: yes
-  when: ansible_user_shell != "/usr/local/bin/fish"
+  when: ansible_user_shell != which_fish.stdout
 
 - name: create fish functions directory
   file: path="{{ home }}/.config/fish/functions" state=directory
 
+- name: install fisher
+  get_url: url=http://git.io/fisher dest="{{ home }}/.config/fish/functions/fisher.fish"
+
 - name: link fishfile
   file: path="{{ home }}/.config/fish/fishfile" src="{{ src_dir }}/dotfiles/fish/fishfile" state=link force=yes
 
-- name: link fish functions
-  file: path="{{ home }}/.config/fish/functions/{{ item }}.fish" src="{{ src_dir }}/dotfiles/fish/functions/{{ item }}.fish" state=link force=yes
-  with_items:
-    - ec
-    - p
-    - v
-
-- name: install fisherman
-  get_url: url=http://git.io/fisher dest="{{ home }}/.config/fish/functions/fisher.fish"
-
-- name: install fisherman packages
+- name: install fisher packages
   expect:
-    command: /usr/local/bin/fish -l -i
+    command: "{{ which_fish.stdout }} -l -i"
     responses:
       ">":
         - fisher
@@ -39,5 +39,7 @@
   file: path="{{ home }}/.config/fish/conf.d" state=directory
 
 - name: link conf.d files
-  file: path="{{ home }}/.config/fish/conf.d/editor.fish" src="{{ src_dir }}/dotfiles/fish/conf.d/editor.fish" state=link force=yes
-
+  file: path="{{ home }}/.config/fish/conf.d/{{ item }}" src="{{ src_dir }}/dotfiles/fish/conf.d/{{ item }}" state=link force=yes
+  with_items:
+    - editor.fish
+    - git.fish

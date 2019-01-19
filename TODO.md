@@ -3,7 +3,6 @@
 - automate actual install parts (like UEFI / EFISTUB setup)
 - set sudo pacman to not ask for password from wheel
 
-- fish fish fish fish fish `><>`
 - keyboard layout: `caps:hyper` not working with `ctrl:swapcaps` as well.
   Should make one of the Ctrl keys work as Hyper in order to have another
   modifier for `sxhkd`.
@@ -56,3 +55,5 @@
   - performance governor when on AC
 - screen lock
 - install dunst for notifications
+- dotfiles
+- fish fish fish fish fish `><>`
