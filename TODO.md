@@ -3,11 +3,25 @@
 - automate actual install parts (like UEFI / EFISTUB setup)
 - set sudo pacman to not ask for password from wheel
 
+- keyboard layout: `caps:hyper` not working with `ctrl:swapcaps` as well.
+  Should make one of the Ctrl keys work as Hyper in order to have another
+  modifier for `sxhkd`.
+- `urxvt`
+  - disable Ctrl-S/Ctrl-Q in urxvt
+  - load tamzen without Xft?
+  - use `urxvtd` and `urxvtc`
+  - set transparency
+- "command not found" stuff
+- install dunst for notifications
 - install base16-manager with Xresources, rofi, vim
   - Xresources: need to create dir `~/.Xresources.d`
   - rofi: need to create dir `~/.config/rofi`
   - vim: need to create dir `~/.config/nvim`, install base16-vim and source `~/.config/nvim/colorscheme.vim`
+  - polybar: use Xresources colors
+  - dunst!
   - future: extend base16-manager to work with iTerm2? ([ref](https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli)).
+- deepin wallpapers (they have a banging one with trees that will probably look
+  good with gruvbox)
 - intel graphics screen tearing on scroll?
   - check out [arch wiki](https://wiki.archlinux.org/index.php/intel_graphics#Tearing)
 - seamless boot with plymouth
@@ -40,3 +54,4 @@
 - add config to systemd so that:
   - powersave governor when on battery
   - performance governor when on AC
+- screen lock

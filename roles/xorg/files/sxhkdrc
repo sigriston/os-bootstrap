@@ -140,3 +140,7 @@ XF86MonBrightnessDown
 
 XF86MonBrightnessUp
   xbacklight -inc 10
+
+# screenlock
+XF86ScreenSaver
+  dm-tool lock
