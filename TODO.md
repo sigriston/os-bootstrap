@@ -7,13 +7,9 @@
   Should make one of the Ctrl keys work as Hyper in order to have another
   modifier for `sxhkd`.
 - `urxvt`
-  - disable Ctrl-S/Ctrl-Q in urxvt
   - load tamzen without Xft?
   - use `urxvtd` and `urxvtc`
-  - set transparency
 - future: extend base16-manager to work with iTerm2? ([ref](https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli)).
-- deepin wallpapers (they have a banging one with trees that will probably look
-  good with gruvbox)
 - intel graphics screen tearing on scroll?
   - check out [arch wiki](https://wiki.archlinux.org/index.php/intel_graphics#Tearing)
 - seamless boot with plymouth
@@ -57,3 +53,7 @@
   - vim need to create dir `~/.config/nvim`, install base16-vim and source `~/.config/nvim/colorscheme.vim`
   - polybar: use Xresources colors
   - dunst!
+- deepin wallpapers
+- `urxvt`
+  - disable Ctrl-S/Ctrl-Q in urxvt (fish gives this for free)
+  - set transparency

@@ -1,2 +1,4 @@
+URxvt*depth: 32
+URxvt*background: [95]base00
 URxvt*font: xft:TamzenForPowerline:size=12
 URxvt*scrollBar: false

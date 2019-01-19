@@ -30,6 +30,7 @@
 - name: install fisher packages
   expect:
     command: "{{ which_fish.stdout }} -l -i"
+    creates: "{{ home }}/.config/fish/functions/bass.fish"
     responses:
       ">":
         - fisher

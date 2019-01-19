@@ -28,3 +28,4 @@
   lineinfile:
     path: "{{ home }}/.Xresources"
     line: '#include ".Xresources.d/colors"'
+    insertbefore: BOF

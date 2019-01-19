@@ -5,7 +5,7 @@ sxhkd &
 polybar top -r &
 dunst &
 
-feh --bg-fill /usr/share/archlinux/wallpaper/archlinux-poison.jpg
+feh --bg-fill /usr/share/wallpapers/deepin/ColdRipple.jpg
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
