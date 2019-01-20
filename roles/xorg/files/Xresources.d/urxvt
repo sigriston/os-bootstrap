@@ -1,4 +1,8 @@
-URxvt*depth: 32
 URxvt*background: [95]base00
+URxvt*depth: 32
+URxvt*fadeColor: [95]base00
+URxvt*fading: 60
 URxvt*font: xft:TamzenForPowerline:size=12
+URxvt*pointerBlank: true
+URxvt*saveLines: 0
 URxvt*scrollBar: false

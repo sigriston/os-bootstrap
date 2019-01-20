@@ -6,9 +6,6 @@
 - keyboard layout: `caps:hyper` not working with `ctrl:swapcaps` as well.
   Should make one of the Ctrl keys work as Hyper in order to have another
   modifier for `sxhkd`.
-- `urxvt`
-  - load tamzen without Xft?
-  - use `urxvtd` and `urxvtc`
 - future: extend base16-manager to work with iTerm2? ([ref](https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli)).
 - intel graphics screen tearing on scroll?
   - check out [arch wiki](https://wiki.archlinux.org/index.php/intel_graphics#Tearing)
@@ -57,3 +54,5 @@
 - `urxvt`
   - disable Ctrl-S/Ctrl-Q in urxvt (fish gives this for free)
   - set transparency
+  - use `urxvtd` and `urxvtc`
+- start `ssh-agent` at login
