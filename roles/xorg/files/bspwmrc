@@ -2,7 +2,6 @@
 
 compton &
 sxhkd &
-ssh-agent &
 urxvtd -q -f -o
 polybar top -r &
 dunst &

@@ -214,3 +214,9 @@
     regexp: '^#?position='
     line: 'position=30%,center 50%,center'
   become: yes
+
+- name: Copy xsession
+  copy:
+    src: xsession
+    dest: "{{ ansible_env.HOME }}/.xsession"
+    mode: 0755
