@@ -8,4 +8,5 @@ dependencies:
   - { role: audio }
   - { role: dotfiles }
   - { role: fish }
+  - { role: vim }
   - { role: themes }

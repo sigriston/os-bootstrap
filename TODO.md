@@ -3,6 +3,8 @@
 - automate actual install parts (like UEFI / EFISTUB setup)
 - set sudo pacman to not ask for password from wheel
 
+- docker
+- kvm/qemu/libvirt/virt-manager
 - keyboard layout: `caps:hyper` not working with `ctrl:swapcaps` as well.
   Should make one of the Ctrl keys work as Hyper in order to have another
   modifier for `sxhkd`.
@@ -56,3 +58,4 @@
   - set transparency
   - use `urxvtd` and `urxvtc`
 - start `ssh-agent` at login
+- port `vim` role to arch

@@ -1,25 +1,23 @@
 ---
 - name: add neovim tap
   homebrew_tap: tap=neovim/neovim state=present
+  when: ansible_os_family == 'Darwin'
 
 - name: install neovim
-  homebrew: name=neovim state=latest
+  package:
+    name: neovim
+    state: present
+  become: "{{ 'no' if ansible_os_family == 'Darwin' else 'yes' }}"
 
-- name: link .vimrc
-  file: path="{{ home }}/.vimrc" src="{{ src_dir }}/dotfiles/vim/vimrc" state=link
-
-- name: link .gvimrc
-  file: path="{{ home }}/.gvimrc" src="{{ src_dir }}/dotfiles/vim/gvimrc" state=link
+- name: install python-neovim
+  package:
+    name: python-neovim
+    state: present
+  become: yes
+  when: ansible_os_family == 'Archlinux'
 
 - name: create neovim config dir
   file: path="{{ home }}/.config/nvim" state=directory
 
 - name: link init.vim (neovim)
   file: path="{{ home }}/.config/nvim/init.vim" src="{{ src_dir }}/dotfiles/nvim/init.vim" state=link force=yes
-
-- name: create neovim config autoload dir
-  file: path="{{ home }}/.config/nvim/autoload" state=directory
-
-- name: install vim-plug
-  get_url: url=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim dest="{{ home }}/.config/nvim/autoload/plug.vim"
-
