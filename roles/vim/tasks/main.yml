@@ -9,6 +9,12 @@
     state: present
   become: "{{ 'no' if ansible_os_family == 'Darwin' else 'yes' }}"
 
+- name: install fzy
+  package:
+    name: fzy
+    state: present
+  become: "{{ 'no' if ansible_os_family == 'Darwin' else 'yes' }}"
+
 - name: install python-neovim
   package:
     name: python-neovim
