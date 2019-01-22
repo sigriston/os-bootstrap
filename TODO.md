@@ -3,6 +3,27 @@
 - automate actual install parts (like UEFI / EFISTUB setup)
 - set sudo pacman to not ask for password from wheel
 
+- password manager:
+  - `pass`
+  - `pass-tomb` ?
+  - `pass-import`
+  - `pass-update`
+  - `pass-otp`
+  - `rofi-pass`
+  - `browserpass`
+- `sxhkd` launchers / shortcuts config. Free keys:
+  - q, a, e, r (RUN?), z (used with ctrl), u, d, x (used with ctrl), n (NAVIGATOR)
+- `bspwm` rules
+- port/cleanup all old roles from `osx-bootstrap`:
+  - `apps`
+  - `nodejs`
+  - `python`
+  - `R`
+  - `ruby`
+  - `tmux`
+  - `tools`
+- new roles:
+  - `rust`
 - docker
 - kvm/qemu/libvirt/virt-manager
 - keyboard layout: `caps:hyper` not working with `ctrl:swapcaps` as well.
@@ -59,3 +80,5 @@
   - use `urxvtd` and `urxvtc`
 - start `ssh-agent` at login
 - port `vim` role to arch
+- screenshot with `maim`
+- clipboard manager (`clipmenu` probably, with `rofi` and `super + v`)
