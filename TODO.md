@@ -25,7 +25,6 @@
 - new roles:
   - `rust`
 - docker
-- kvm/qemu/libvirt/virt-manager
 - keyboard layout: `caps:hyper` not working with `ctrl:swapcaps` as well.
   Should make one of the Ctrl keys work as Hyper in order to have another
   modifier for `sxhkd`.
@@ -82,3 +81,4 @@
 - port `vim` role to arch
 - screenshot with `maim`
 - clipboard manager (`clipmenu` probably, with `rofi` and `super + v`)
+- kvm/qemu/libvirt/virt-manager

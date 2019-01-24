@@ -1,0 +1,51 @@
+---
+- name: Install virtualization packages
+  package:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+    - qemu
+    - ovmf
+    - libvirt
+    - virt-manager
+    - firewalld
+    - ebtables
+    - dnsmasq
+    - bridge-utils
+    - openbsd-netcat
+
+- name: Enable/Start libvirtd
+  systemd:
+    name: libvirtd
+    enabled: yes
+    state: started
+  become: yes
+
+- name: Add main user to groups necessary for managing VMs
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: "{{ item }}"
+    append: yes
+  become: yes
+  with_items:
+    - libvirt
+    - kvm
+    - dnsmasq
+
+- name: Modify firewalld backend to iptables
+  lineinfile:
+    path: /etc/firewalld/firewalld.conf
+    regexp: '^FirewallBackend='
+    line: 'FirewallBackend=iptables'
+  become: yes
+
+- name: Expose OVMF to libvirt/qemu
+  blockinfile:
+    path: /etc/libvirt/qemu.conf
+    insertbefore: '^# ?nvram = \['
+    block: |
+      nvram = [
+        "/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd"
+      ]
+  become: yes

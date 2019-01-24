@@ -10,3 +10,4 @@ dependencies:
   - { role: fish }
   - { role: vim }
   - { role: themes }
+  - { role: kvm }
