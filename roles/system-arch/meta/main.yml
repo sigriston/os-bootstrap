@@ -11,3 +11,4 @@ dependencies:
   - { role: vim }
   - { role: themes }
   - { role: kvm }
+  - { role: docker }
