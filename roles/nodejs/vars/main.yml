@@ -5,5 +5,6 @@ nodejs_packages:
   - ava
   - create-react-app
   - eslint
-  - gulp@3.9.0
+  - gulp
   - jsonlint
+  - yarn

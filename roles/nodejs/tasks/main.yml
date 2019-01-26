@@ -20,8 +20,16 @@
     executable: /bin/bash
     creates: "{{ ansible_env.HOME }}/.nvm/alias/default"
 
-- name: install npm global packages
-  shell: "source $HOME/.nvm/nvm.sh && npm install -g {{ item }}"
+- name: grab node.js version
+  shell: source "$HOME/.nvm/nvm.sh" && node --version
   args:
     executable: /bin/bash
+  register: nodejs_version
+
+- name: install npm global packages
+  npm:
+    name: "{{ item }}"
+    global: yes
+    state: present
+    executable: "{{ ansible_env.HOME }}/.nvm/versions/node/{{ nodejs_version.stdout }}/bin/npm"
   with_items: "{{ nodejs_packages }}"
