@@ -3,20 +3,7 @@ home: "{{ ansible_env.HOME }}"
 
 nodejs_packages:
   - ava
-  - bower
+  - create-react-app
   - eslint
-  - grunt-cli
-  - gulp
-  - html2jade
-  - jade
-  - jake
-  - js-beautify
-  - js-yaml
+  - gulp@3.9.0
   - jsonlint
-  - jspm
-  - karma-cli
-  - less
-  - npm-check-updates
-  - sloc
-  - tern
-  - yo

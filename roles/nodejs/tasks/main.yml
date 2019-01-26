@@ -1,19 +1,27 @@
 ---
-- name: install node.js LTS
-  shell: "fnm use lts"
-  args:
-    executable: /usr/local/bin/fish
+- name: install jq
+  package:
+    name: jq
+    state: present
+  become: yes
 
-# - name: install npm global packages
-#   npm:
-#     name: "{{ item }}"
-#     global: yes
-#     state: latest
-#     executable: "{{ home }}/.config/fnm/bin/npm"
-#   with_items: "{{ nodejs_packages }}"
+- name: get nvm latest tag
+  shell: curl -sL https://api.github.com/repos/creationix/nvm/releases/latest | jq -r '.tag_name'
+  register: nvm_latest_tag
+
+- name: install nvm
+  shell: "curl -o- https://raw.githubusercontent.com/creationix/nvm/{{ nvm_latest_tag.stdout }}/install.sh | bash"
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: install node.js LTS
+  shell: source "$HOME/.nvm/nvm.sh" && nvm install --lts
+  args:
+    executable: /bin/bash
+    creates: "{{ ansible_env.HOME }}/.nvm/alias/default"
 
 - name: install npm global packages
-  shell: "npm install -g {{ item }}"
+  shell: "source $HOME/.nvm/nvm.sh && npm install -g {{ item }}"
   args:
-    executable: /usr/local/bin/fish
+    executable: /bin/bash
   with_items: "{{ nodejs_packages }}"

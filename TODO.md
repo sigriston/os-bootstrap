@@ -16,7 +16,6 @@
 - `bspwm` rules
 - port/cleanup all old roles from `osx-bootstrap`:
   - `apps`
-  - `nodejs`
   - `python`
   - `R`
   - `ruby`
@@ -82,3 +81,5 @@
 - clipboard manager (`clipmenu` probably, with `rofi` and `super + v`)
 - kvm/qemu/libvirt/virt-manager
 - docker
+- port/cleanup all old roles from `osx-bootstrap`:
+  - `nodejs`
