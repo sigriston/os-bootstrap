@@ -1,12 +1,14 @@
 ---
 - name: install tmux
-  homebrew: name=tmux state=latest
+  package:
+    name: tmux
+    state: present
+  become: yes
 
-- name: install tmuxinator
-  gem:
-    name: tmuxinator
-    user_install: no
-    state: latest
+- name: install tmuxp
+  package:
+    name: tmuxp
+    state: present
   become: yes
 
 - name: link tmux.conf

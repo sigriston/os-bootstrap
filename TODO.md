@@ -19,7 +19,6 @@
   - `python`
   - `R`
   - `ruby`
-  - `tmux`
   - `tools`
 - new roles:
   - `rust`
@@ -83,3 +82,4 @@
 - docker
 - port/cleanup all old roles from `osx-bootstrap`:
   - `nodejs`
+  - `tmux`
