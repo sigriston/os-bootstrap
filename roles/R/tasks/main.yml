@@ -1,12 +1,30 @@
 ---
 - name: install R
-  homebrew: name=r state=present
+  package: name=r state=present
+  become: "{{ 'no' if ansible_os_family == 'Darwin' else 'yes' }}"
 
-- name: install Rstudio
+- name: install Rstudio (macOS)
   homebrew_cask: name=rstudio state=present
+  when: ansible_os_family == 'Darwin'
+
+- name: install Rstudio (Arch)
+  command: yay -S --noconfirm rstudio-desktop-bin
+  when: ansible_os_family == 'Archlinux'
+
+- name: create R user library directory
+  file:
+    path: "{{ ansible_env.HOME }}/.local/share/R/library"
+    state: directory
+  when: ansible_os_family != 'Darwin'
+
+- name: create .Rprofile file
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.Rprofile"
+    line: ".libPaths(\"{{ ansible_env.HOME }}/.local/share/R/library\")"
+    create: yes
 
 - name: obtain R library path
-  command: Rscript -e '.libPaths()'
+  command: Rscript -e '.libPaths()[1]'
   register: rlp_out
 - name: set rlibpath fact
   set_fact: rlibpath="{{ rlp_out.stdout | regex_replace('^\\[\\d+\\]\\s*\"(.*)\"$', '\\1') }}"

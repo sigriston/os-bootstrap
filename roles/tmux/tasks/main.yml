@@ -3,13 +3,13 @@
   package:
     name: tmux
     state: present
-  become: yes
+  become: "{{ 'no' if ansible_os_family == 'Darwin' else 'yes' }}"
 
 - name: install tmuxp
   package:
     name: tmuxp
     state: present
-  become: yes
+  become: "{{ 'no' if ansible_os_family == 'Darwin' else 'yes' }}"
 
 - name: link tmux.conf
   file: path="{{ home }}/.tmux.conf" src="{{ src_dir }}/dotfiles/tmux/tmux.conf" state=link force=yes

@@ -3,6 +3,7 @@
 - automate actual install parts (like UEFI / EFISTUB setup)
 - set sudo pacman to not ask for password from wheel
 
+- fix packages tasks to not use looping / `with_items`
 - password manager:
   - `pass`
   - `pass-tomb` ?
@@ -12,14 +13,8 @@
   - `rofi-pass`
   - `browserpass`
 - `sxhkd` launchers / shortcuts config. Free keys:
-  - q, a, e, r (RUN?), z (used with ctrl), u, d, x (used with ctrl), n (NAVIGATOR)
+  - a, e, r (RUN?), z (used with ctrl), u, d, x (used with ctrl), n (NAVIGATOR)
 - `bspwm` rules
-- port/cleanup all old roles from `osx-bootstrap`:
-  - `apps`
-  - `python`
-  - `R`
-  - `ruby`
-  - `tools`
 - new roles:
   - `rust`
 - keyboard layout: `caps:hyper` not working with `ctrl:swapcaps` as well.
@@ -81,5 +76,10 @@
 - kvm/qemu/libvirt/virt-manager
 - docker
 - port/cleanup all old roles from `osx-bootstrap`:
+  - `apps`
   - `nodejs`
   - `tmux`
+  - `tools`
+  - `python` (deprecated)
+  - `ruby` (deprecated)
+  - `R`
