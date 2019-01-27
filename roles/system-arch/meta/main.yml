@@ -10,7 +10,8 @@ dependencies:
   - { role: tmux }
   - { role: fish }
   - { role: vim }
-  - { role: themes }
   - { role: kvm }
   - { role: docker }
+  - { role: tools }
   - { role: nodejs }
+  - { role: themes }

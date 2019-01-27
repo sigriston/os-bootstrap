@@ -1,8 +1,6 @@
 ---
-brew_packages:
-  - dockutil
+tools_packages:
   - dos2unix
-  - editorconfig
   - ffmpeg
   - fzf
   - gcc
@@ -11,19 +9,22 @@ brew_packages:
   - go
   - highlight
   - hub
-  - jmeter
   - jq
-  - lynis
-  - mdbtools
   - mosh
   - pandoc
   - pv
-  - readline
   - sqlite
-  - the_platinum_searcher
+  - tig
   - tree
   - unrar
-  - wget
-  - wine
   - youtube-dl
   - zopfli
+
+arch_packages:
+  - editorconfig-core-c
+
+brew_packages:
+  - dockutil
+  - editorconfig
+  - mdbtools
+  - readline

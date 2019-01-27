@@ -1,7 +1,24 @@
 ---
+- name: install tools
+  package:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items: "{{ tools_packages }}"
+
+- name: install arch packages
+  package:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items: "{{ arch_packages }}"
+  when: ansible_os_family == 'Archlinux'
+
 - name: install xquartz
   homebrew_cask: name=xquartz state=present
+  when: ansible_os_family == 'Darwin'
 
 - name: install homebrew packages
   homebrew: name="{{ item }}" state=latest update_homebrew=yes
   with_items: "{{ brew_packages }}"
+  when: ansible_os_family == 'Darwin'
