@@ -13,5 +13,6 @@ dependencies:
   - { role: kvm }
   - { role: docker }
   - { role: tools }
+  - { role: apps }
   - { role: nodejs }
   - { role: themes }

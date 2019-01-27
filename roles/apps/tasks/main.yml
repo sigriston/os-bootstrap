@@ -1,5 +1,19 @@
 ---
+- name: install arch apps
+  package:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items: "{{ arch_apps }}"
+  when: ansible_os_family == 'Archlinux'
+
+- name: install arch apps from AUR
+  command: yay -S --noconfirm "{{ item }}"
+  with_items: "{{ aur_apps }}"
+  when: ansible_os_family == 'Archlinux'
+
 - name: install homebrew cask apps
   homebrew_cask: name="{{ item }}" state=present
   with_items:
     - "{{ cask_apps }}"
+  when: ansible_os_family == 'Darwin'

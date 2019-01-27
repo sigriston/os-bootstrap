@@ -5,23 +5,38 @@ tools_packages:
   - fzf
   - gcc
   - gdal
+  - gdb
   - git
   - go
   - highlight
+  - htop
   - hub
+  - imagemagick
   - jq
   - mosh
+  - neofetch
+  - newsboat
   - pandoc
+  - potrace
+  - povray
   - pv
+  - ranger
+  - rclone
+  - rtorrent
   - sqlite
   - tig
   - tree
   - unrar
+  - weechat
   - youtube-dl
   - zopfli
 
 arch_packages:
   - editorconfig-core-c
+  - packer
+  - rsync
+  - task
+  - vagrant
 
 brew_packages:
   - dockutil

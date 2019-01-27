@@ -1,4 +1,36 @@
 ---
+arch_apps:
+  - ardour
+  - audacity
+  - blender
+  - darktable
+  - firefox
+  - gimp
+  - gimp-help-en
+  - gimp-nufraw
+  - gimp-plugin-fblur
+  - gimp-plugin-wavelet-denoise
+  - gimp-refocus
+  - grafx2
+  - handbrake
+  - inkscape
+  - krita
+  - libreoffice-fresh
+  - mpd
+  - ncmpc
+  - qutebrowser
+  - rawtherapee
+  - scribus
+  - sxiv
+  - tigervnc
+  - zathura
+  - zathura-pdf-mupdf
+  - zeal
+
+aur_apps:
+  - google-chrome
+  - skypeforlinux-stable-bin
+
 cask_apps:
   - adobe-photoshop-lightroom571
   - clipmenu
