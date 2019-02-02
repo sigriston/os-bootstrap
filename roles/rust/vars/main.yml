@@ -1,0 +1,17 @@
+---
+home: "{{ ansible_env.HOME }}"
+
+rust_components:
+  - clippy
+  - rls
+  - rust-analysis
+  - rust-src
+  - rustfmt
+
+cargo_packages:
+  - package: ripgrep
+    bin: rg
+  - package: fd-find
+    bin: fd
+  - package: lsd
+    bin: lsd

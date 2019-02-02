@@ -15,8 +15,6 @@
 - `sxhkd` launchers / shortcuts config. Free keys:
   - a, e, r (RUN?), z (used with ctrl), u, d, x (used with ctrl), n (NAVIGATOR)
 - `bspwm` rules
-- new roles:
-  - `rust`
 - keyboard layout: `caps:hyper` not working with `ctrl:swapcaps` as well.
   Should make one of the Ctrl keys work as Hyper in order to have another
   modifier for `sxhkd`.
@@ -83,3 +81,5 @@
   - `python` (deprecated)
   - `ruby` (deprecated)
   - `R`
+- new roles:
+  - `rust`

@@ -16,4 +16,5 @@ dependencies:
   - { role: apps }
   - { role: nodejs }
   - { role: R }
+  - { role: rust }
   - { role: themes }
