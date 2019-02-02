@@ -17,7 +17,7 @@
   command: "base16-manager install {{ item }}"
   args:
     creates: "{{ home }}/.base16-manager/{{ item }}"
-  with_items: "{{ base16_manager_templates_macos if ansible_os_family == 'Darwin' else base16_manager_templates_linux }}"
+  loop: "{{ base16_manager_templates_macos if ansible_os_family == 'Darwin' else base16_manager_templates_linux }}"
   register: base16_manager_installed
 
 - name: set base16-manager default theme

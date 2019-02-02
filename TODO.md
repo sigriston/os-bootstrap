@@ -3,7 +3,6 @@
 - automate actual install parts (like UEFI / EFISTUB setup)
 - set sudo pacman to not ask for password from wheel
 
-- fix packages tasks to not use looping / `with_items`
 - password manager:
   - `pass`
   - `pass-tomb` ?
@@ -83,3 +82,4 @@
   - `R`
 - new roles:
   - `rust`
+- fix packages tasks to not use looping / `with_items`

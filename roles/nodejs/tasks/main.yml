@@ -31,7 +31,7 @@
   args:
     executable: /bin/bash
     creates: "{{ ansible_env.HOME }}/.nvm/versions/node/{{ nodejs_version.stdout }}/lib/node_modules/{{ item }}"
-  with_items: "{{ nodejs_packages }}"
+  loop: "{{ nodejs_packages }}"
 
 # TODO: using the npm module is a bit better but seems broken on python 3.7
 # - name: install npm global packages
@@ -40,4 +40,4 @@
 #     global: yes
 #     state: present
 #     executable: "{{ ansible_env.HOME }}/.nvm/versions/node/{{ nodejs_version.stdout }}/bin/npm"
-#   with_items: "{{ nodejs_packages }}"
+#   loop: "{{ nodejs_packages }}"

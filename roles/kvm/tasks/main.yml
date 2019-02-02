@@ -1,19 +1,9 @@
 ---
 - name: Install virtualization packages
   package:
-    name: "{{ item }}"
+    name: qemu ovmf libvirt virt-manager firewalld ebtables dnsmasq bridge-utils openbsd-netcat
     state: present
   become: yes
-  with_items:
-    - qemu
-    - ovmf
-    - libvirt
-    - virt-manager
-    - firewalld
-    - ebtables
-    - dnsmasq
-    - bridge-utils
-    - openbsd-netcat
 
 - name: Enable/Start libvirtd
   systemd:
@@ -28,7 +18,7 @@
     groups: "{{ item }}"
     append: yes
   become: yes
-  with_items:
+  loop:
     - libvirt
     - kvm
     - dnsmasq

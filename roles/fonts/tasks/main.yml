@@ -4,32 +4,28 @@
   when: ansible_os_family == 'Darwin'
 
 - name: install fonts
-  homebrew_cask: name="{{ item }}" state=present
-  with_items: "{{ mac_font_packages }}"
+  homebrew_cask: name="{{ mac_font_packages }}" state=present
   when: ansible_os_family == 'Darwin'
 
 - name: Install nice ttf/otf fonts
   package:
-    name: "{{ item }}"
+    name: "{{ arch_font_packages }}"
     state: present
   become: yes
-  with_items: "{{ arch_font_packages }}"
   when: ansible_os_family == 'Archlinux'
 
 - name: Install programmer bitmap fonts
   package:
-    name: "{{ item }}"
+    name: "{{ arch_bitmap_font_packages }}"
     state: present
   become: yes
-  with_items: "{{ arch_bitmap_font_packages }}"
   when: ansible_os_family == 'Archlinux'
 
 - name: Install programmer ttf fonts
   package:
-    name: "{{ item }}"
+    name: "{{ arch_prog_ttf_font_packages }}"
     state: present
   become: yes
-  with_items: "{{ arch_prog_ttf_font_packages }}"
   when: ansible_os_family == 'Archlinux'
 
 - name: Install tamzen bitmap font

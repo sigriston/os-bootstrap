@@ -6,10 +6,10 @@
 
 - name: install rust dev components
   command: "{{ home }}/.cargo/bin/rustup component add {{ item }}"
-  with_items: "{{ rust_components }}"
+  loop: "{{ rust_components }}"
 
 - name: install cargo global packages
   command: "{{ home }}/.cargo/bin/cargo install {{ item.package }}"
   args:
     creates: "{{ home }}/.cargo/bin/{{ item.bin }}"
-  with_items: "{{ cargo_packages }}"
+  loop: "{{ cargo_packages }}"

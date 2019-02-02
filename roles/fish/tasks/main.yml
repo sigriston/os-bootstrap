@@ -41,7 +41,7 @@
 
 - name: link conf.d files
   file: path="{{ home }}/.config/fish/conf.d/{{ item }}" src="{{ src_dir }}/dotfiles/fish/conf.d/{{ item }}" state=link force=yes
-  with_items:
+  loop:
     - editor.fish
     - git.fish
 

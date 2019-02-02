@@ -94,7 +94,7 @@
   file:
     path: "{{ ansible_env.HOME }}/.config/{{ item }}"
     state: directory
-  with_items:
+  loop:
     - bspwm
     - sxhkd
 
@@ -103,7 +103,7 @@
     src: "{{ item }}rc"
     dest: "{{ ansible_env.HOME }}/.config/{{ item }}/{{ item }}rc"
     mode: 0755
-  with_items:
+  loop:
     - bspwm
     - sxhkd
 
@@ -204,12 +204,9 @@
 
 - name: Install clipmenu/notify
   package:
-    name: "{{ item }}"
+    name: clipnotify clipmenu
     state: present
   become: yes
-  with_items:
-    - clipnotify
-    - clipmenu
 
 - name: Enable/Start clipmenud
   systemd:
@@ -226,13 +223,9 @@
 
 - name: Install deepin wallpapers
   package:
-    name: "{{ item }}"
+    name: deepin-community-wallpapers deepin-wallpapers deepin-wallpapers-plasma
     state: present
   become: yes
-  with_items:
-    - deepin-community-wallpapers
-    - deepin-wallpapers
-    - deepin-wallpapers-plasma
 
 - name: Set lightdm wallpaper
   lineinfile:

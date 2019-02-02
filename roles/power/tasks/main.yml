@@ -13,12 +13,9 @@
 
 - name: Install power-related tools
   package:
-    name: "{{ item }}"
+    name: cpupower powertop
     state: present
   become: yes
-  with_items:
-    - cpupower
-    - powertop
 
 - name: Add udev rules to use performance governor on AC power
   copy:
