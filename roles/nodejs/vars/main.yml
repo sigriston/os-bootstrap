@@ -6,5 +6,6 @@ nodejs_packages:
   - create-react-app
   - eslint
   - gulp
+  - javascript-typescript-langserver
   - jsonlint
   - yarn
