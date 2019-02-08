@@ -44,6 +44,7 @@ mkfs.xfs -L root /dev/sda2
 
 # Format and activate swap
 mkswap -L swap /dev/sda3
+sleep 1
 swapon /dev/disk/by-label/swap
 
 # Format home
