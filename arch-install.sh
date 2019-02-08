@@ -17,7 +17,7 @@ declare -i MEM_SIZE_IN_MIB=$((MEM_SIZE_IN_KIB / 1024))
 declare -i SWAP_SIZE_IN_MIB=$((MEM_SIZE_IN_MIB + 512))
 
 declare -i EFI_SIZE_IN_MIB=512
-declare -i ROOT_END_IN_MIB=$((ROOT_SIZE + EFI_SIZE_IN_MIB))
+declare -i ROOT_END_IN_MIB=$((ROOT_SIZE_IN_MIB + EFI_SIZE_IN_MIB))
 declare -i SWAP_END_IN_MIB=$((ROOT_END_IN_MIB + SWAP_SIZE_IN_MIB))
 
 parted -s -a optimal "$DISK_DEVICE" mklabel gpt
