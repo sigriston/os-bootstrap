@@ -1,6 +1,5 @@
 # TODO: Arch Linux ansible bootstrap setup
 
-- automate actual install parts (like UEFI / EFISTUB setup)
 - set sudo pacman to not ask for password from wheel
 
 - password manager:
@@ -83,3 +82,4 @@
 - new roles:
   - `rust`
 - fix packages tasks to not use looping / `with_items`
+- automate actual install parts (like UEFI / EFISTUB setup)
