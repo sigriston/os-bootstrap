@@ -40,7 +40,7 @@ parted -s -a optimal "$DISK_DEVICE" name 4 home
 mkfs.fat -F32 /dev/sda1
 
 # Format root
-mkfs.xfs -L root /dev/sda2
+mkfs.xfs -f -L root /dev/sda2
 
 # Format and activate swap
 mkswap -L swap /dev/sda3
@@ -48,7 +48,7 @@ sleep 1
 swapon /dev/disk/by-label/swap
 
 # Format home
-mkfs.xfs -L home /dev/sda4
+mkfs.xfs -f -L home /dev/sda4
 
 # Mount the file systems
 # https://wiki.archlinux.org/index.php/Installation_guide#Mount_the_file_systems
