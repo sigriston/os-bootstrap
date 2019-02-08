@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 # Time zone
 # https://wiki.archlinux.org/index.php/Installation_guide#Time_zone
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime

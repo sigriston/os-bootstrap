@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 # Update the system clock 
 # https://wiki.archlinux.org/index.php/Installation_guide#Update_the_system_clock
 timedatectl set-ntp true
