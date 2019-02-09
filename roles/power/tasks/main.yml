@@ -3,7 +3,6 @@
   command: yay -S --noconfirm thinkfan-git
   args:
     creates: /usr/bin/thinkfan
-  become: yes
 
 - name: copy thinkfan configuration
   copy:
