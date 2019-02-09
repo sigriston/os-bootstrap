@@ -83,3 +83,5 @@
   - `rust`
 - fix packages tasks to not use looping / `with_items`
 - automate actual install parts (like UEFI / EFISTUB setup)
+- new install, fixed lots of bugs:
+  - incorrect EFISTUB
