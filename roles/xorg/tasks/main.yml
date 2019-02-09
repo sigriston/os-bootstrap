@@ -49,6 +49,12 @@
     line: '<dead_acute> <c>                 	: "ç"   ccedilla # LATIN SMALL LETTER C WITH CEDILLA'
   become: yes
 
+- name: Install libxkbcommon
+  package:
+    name: libxkbcommon libxkbcommon-x11
+    state: present
+  become: yes
+
 - name: Set proper keymap for X11
   command: /usr/bin/localectl --no-convert --no-ask-password set-x11-keymap us,us pc105 ,intl grp:shifts_toggle,ctrl:swapcaps,caps:hyper
   args:
@@ -111,6 +117,11 @@
   command: yay -S --noconfirm polybar
   args:
     creates: /usr/bin/polybar
+
+- name: create polybar config dir
+  file:
+    path: "{{ ansible_env.HOME }}/.config/polybar"
+    state: directory
 
 - name: copy polybar configuration
   copy:
