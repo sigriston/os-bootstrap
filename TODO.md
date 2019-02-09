@@ -87,3 +87,4 @@
   - incorrect EFISTUB
   - forgot to add font-awesome to font list
   - running yay with root to install thinkfan
+  - install `openssh`
