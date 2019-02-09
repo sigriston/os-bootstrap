@@ -85,3 +85,4 @@
 - automate actual install parts (like UEFI / EFISTUB setup)
 - new install, fixed lots of bugs:
   - incorrect EFISTUB
+  - forgot to add font-awesome to font list

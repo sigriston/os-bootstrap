@@ -16,6 +16,7 @@ arch_font_packages:
   - ttf-croscore
   - ttf-dejavu
   - ttf-droid
+  - ttf-font-awesome
   - ttf-liberation
   - ttf-roboto
 
