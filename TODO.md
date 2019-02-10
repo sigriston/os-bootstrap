@@ -89,3 +89,6 @@
   - running yay with root to install thinkfan
   - install `openssh`
   - install `libxkbcommon` to enable `localectl`
+  - build `polybar` only after audio
+  - don't start `lightdm`
+- enable periodic TRIM on SSDs

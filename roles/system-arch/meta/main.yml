@@ -2,10 +2,11 @@
 dependencies:
   - { role: modules }
   - { role: aur }
+  - { role: storage }
   - { role: power }
+  - { role: audio }
   - { role: xorg }
   - { role: fonts }
-  - { role: audio }
   - { role: dotfiles }
   - { role: tmux }
   - { role: fish }

@@ -1,0 +1,7 @@
+---
+- name: Enable fstrim.timer
+  systemd:
+    name: fstrim.timer
+    enabled: yes
+  become: yes
+  when: has_ssd
