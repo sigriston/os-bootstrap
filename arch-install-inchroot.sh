@@ -31,7 +31,14 @@ passwd
 # https://wiki.archlinux.org/index.php/Installation_guide#Boot_loader
 # https://wiki.archlinux.org/index.php/Arch_boot_process#Boot_loader
 # https://wiki.archlinux.org/index.php/EFISTUB#efibootmgr
-efibootmgr --disk /dev/sda --part 1 --create --label 'Arch Linux' --loader /vmlinuz-linux --unicode 'root=PARTLABEL=root rw initrd=\intel-ucode.img initrd=\initramfs-linux.img acpi_backlight=vendor quiet loglevel=3 udev.log_priority=3 rd.systemd.show_status=auto rd.udev.log_priority=3 i915.fastboot=1 intel_iommu=on iommu=pt vsyscall=emulate resume=/dev/sda3' --verbose
+if [[ `systemd-detect-virt` == "none" ]]; then
+  pacman -S intel-ucode
+  BOOT_OPTIONS='root=PARTLABEL=root rw initrd=\intel-ucode.img initrd=\initramfs-linux.img acpi_backlight=vendor quiet loglevel=3 udev.log_priority=3 rd.systemd.show_status=auto rd.udev.log_priority=3 i915.fastboot=1 intel_iommu=on iommu=pt vsyscall=emulate resume=/dev/sda3'
+else
+  BOOT_OPTIONS='root=PARTLABEL=root rw initrd=\initramfs-linux.img'
+fi
+
+efibootmgr --disk /dev/sda --part 1 --create --label 'Arch Linux' --loader /vmlinuz-linux --unicode "${BOOT_OPTIONS}" --verbose
 
 # Clone this repo for post-install scripting
 cd $HOME

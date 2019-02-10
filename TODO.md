@@ -92,3 +92,4 @@
   - build `polybar` only after audio
   - don't start `lightdm`
 - enable periodic TRIM on SSDs
+- detect VM on `arch-install.sh`
