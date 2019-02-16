@@ -241,7 +241,7 @@
   lineinfile:
     path: /etc/lightdm/lightdm-gtk-greeter.conf
     regexp: '^#?background='
-    line: 'background=/usr/share/archlinux/wallpaper/archlinux-ekisho-carbonite.jpg'
+    line: 'background=/usr/share/backgrounds/archlinux/archlinux-ekisho-carbonite.jpg'
   become: yes
 
 - name: Set lightdm position
