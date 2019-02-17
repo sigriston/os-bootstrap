@@ -42,8 +42,7 @@ font-0 = Noto Sans:style=Condensed:size=8:antialias=true
 font-1 = Font Awesome 5 Free:style=Solid:size=8:antialias=true
 font-2 = Font Awesome 5 Brands:style=Regular:size=8:antialias=true
 
-modules-left = bspwm
-modules-center = xwindow
+modules-left = bspwm xwindow
 modules-right = filesystem xkeyboard cpu memory eth wifi backlight volume battery date
 
 tray-position = right
@@ -72,7 +71,10 @@ label-empty-padding = 2
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+format-prefix = "  "
+label = %title%
+label-maxlen = 160
+format-underline= ${colors.primary}
 
 [module/filesystem]
 type = internal/fs

@@ -1,7 +1,24 @@
 # TODO: Arch Linux ansible bootstrap setup
 
-- set sudo pacman to not ask for password from wheel
+- `arch-install.sh` detects BIOS (for coreboot) vs. UEFI
+  - BIOS: partition GPT, 1 MiB BIOS boot partition, 511 MiB /boot ext2, install GRUB
+  - UEFI: current setup w/ GPT, ESP partition, EFISTUB
+- `polybar` config to display KB layouts as only `US` or `Intl` (use layout
+  index and associate each with a static label)
+- `polybar` config to display temperature/sensors
+- multiple monitors!
+  - have a `udev` script that triggers on `drm` changes with `HOTPLUG`
+  - `udev` script should call xrandr and config screens accordingly, it should also restart WM
+  - should we restart `lightdm` as well?
+  - do we have to configure `lightdm` somehow?
+  - `bspwmrc` should have dynamic logic (by calling `xrandr -q | grep
+    '\bconnected\b' | awk '{print $1}'`) and configure virtual desktops
+    appropriately for how many monitors there are
+  - `polybar` config should also have dynamic logic for bars on multiple monitors
 
+- `sxhkd` launchers / shortcuts config. Free keys:
+  - a, e, r (RUN?), z (used with ctrl), u, d, x (used with ctrl), n (NAVIGATOR)
+- `bspwm` rules
 - password manager:
   - `pass`
   - `pass-tomb` ?
@@ -10,18 +27,15 @@
   - `pass-otp`
   - `rofi-pass`
   - `browserpass`
-- `sxhkd` launchers / shortcuts config. Free keys:
-  - a, e, r (RUN?), z (used with ctrl), u, d, x (used with ctrl), n (NAVIGATOR)
-- `bspwm` rules
-- keyboard layout: `caps:hyper` not working with `ctrl:swapcaps` as well.
+- **UNKNOWN** keyboard layout: `caps:hyper` not working with `ctrl:swapcaps` as well.
   Should make one of the Ctrl keys work as Hyper in order to have another
   modifier for `sxhkd`.
-- future: extend base16-manager to work with iTerm2? ([ref](https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli)).
-- intel graphics screen tearing on scroll?
+- **VM** **FUTURE** actually detect intel graphics vs virtualbox/vmsvga/spice on xorg install
+- **MAC** **FUTURE** extend base16-manager to work with iTerm2? ([ref](https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli)).
+- **OPENBSD** **FUTURE** port to OpenBSD
+- **QUESTION** **FUTURE** seamless boot with plymouth? is there a perf hit?
+- **QUESTION** **FUTURE** intel graphics screen tearing on scroll?
   - check out [arch wiki](https://wiki.archlinux.org/index.php/intel_graphics#Tearing)
-- seamless boot with plymouth
-- actually detect intel graphics vs virtualbox on xorg install
-- future: multiple monitors?
 
 ## DONE
 - install proper X fonts
@@ -93,3 +107,8 @@
   - don't start `lightdm`
 - enable periodic TRIM on SSDs
 - detect VM on `arch-install.sh`
+- `polybar` config for better window title display
+  - `colors.primary` underline
+  - align title on left
+  - more room for title
+  - icon
