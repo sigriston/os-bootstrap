@@ -15,6 +15,9 @@
     '\bconnected\b' | awk '{print $1}'`) and configure virtual desktops
     appropriately for how many monitors there are
   - `polybar` config should also have dynamic logic for bars on multiple monitors
+- TLP install?
+  - detect hardware and install it only on battery-powered hardware
+  - should remove udev script for changing governor?
 
 - `sxhkd` launchers / shortcuts config. Free keys:
   - a, e, r (RUN?), z (used with ctrl), u, d, x (used with ctrl), n (NAVIGATOR)
