@@ -140,7 +140,7 @@ format-disconnected =
 
 [module/wifi]
 type = internal/network
-interface = wlp3s0
+interface = wlp2s0
 interval = 3.0
 
 format-connected-underline = ${xrdb:color2:#55aa55}
