@@ -20,35 +20,69 @@ declare -i EFI_SIZE_IN_MIB=512
 declare -i ROOT_END_IN_MIB=$((ROOT_SIZE_IN_MIB + EFI_SIZE_IN_MIB))
 declare -i SWAP_END_IN_MIB=$((ROOT_END_IN_MIB + SWAP_SIZE_IN_MIB))
 
-parted -s -a optimal "$DISK_DEVICE" mklabel gpt
-parted -s -a optimal "$DISK_DEVICE" mkpart fat32 "0%" "${EFI_SIZE_IN_MIB}MiB"
-parted -s -a optimal "$DISK_DEVICE" name 1 boot
-parted -s -a optimal "$DISK_DEVICE" set 1 boot on
-parted -s -a optimal "$DISK_DEVICE" set 1 esp on
-parted -s -a optimal "$DISK_DEVICE" mkpart xfs "${EFI_SIZE_IN_MIB}MiB" "${ROOT_END_IN_MIB}MiB"
-parted -s -a optimal "$DISK_DEVICE" name 2 root
-parted -s -a optimal "$DISK_DEVICE" mkpart linux-swap "${ROOT_END_IN_MIB}MiB" "${SWAP_END_IN_MIB}MiB"
-parted -s -a optimal "$DISK_DEVICE" name 3 swap
-parted -s -a optimal "$DISK_DEVICE" mkpart xfs "${SWAP_END_IN_MIB}MiB" "100%"
-parted -s -a optimal "$DISK_DEVICE" name 4 home
+if [[ -d /sys/firmware/efi/efivars ]]; then
+  parted -s -a optimal "$DISK_DEVICE" mklabel gpt
+  parted -s -a optimal "$DISK_DEVICE" mkpart fat32 "0%" "${EFI_SIZE_IN_MIB}MiB"
+  parted -s -a optimal "$DISK_DEVICE" name 1 boot
+  parted -s -a optimal "$DISK_DEVICE" set 1 boot on
+  parted -s -a optimal "$DISK_DEVICE" set 1 esp on
+  parted -s -a optimal "$DISK_DEVICE" mkpart xfs "${EFI_SIZE_IN_MIB}MiB" "${ROOT_END_IN_MIB}MiB"
+  parted -s -a optimal "$DISK_DEVICE" name 2 root
+  parted -s -a optimal "$DISK_DEVICE" mkpart linux-swap "${ROOT_END_IN_MIB}MiB" "${SWAP_END_IN_MIB}MiB"
+  parted -s -a optimal "$DISK_DEVICE" name 3 swap
+  parted -s -a optimal "$DISK_DEVICE" mkpart xfs "${SWAP_END_IN_MIB}MiB" "100%"
+  parted -s -a optimal "$DISK_DEVICE" name 4 home
 
-# Format the partitions
-# https://wiki.archlinux.org/index.php/Installation_guide#Format_the_partitions
+  # Format the partitions
+  # https://wiki.archlinux.org/index.php/Installation_guide#Format_the_partitions
 
-# Format EFI
-# https://wiki.archlinux.org/index.php/EFI_system_partition#Format_the_partition
-mkfs.fat -F32 /dev/sda1
+  # Format EFI
+  # https://wiki.archlinux.org/index.php/EFI_system_partition#Format_the_partition
+  mkfs.fat -F32 /dev/sda1
 
-# Format root
-mkfs.xfs -f -L root /dev/sda2
+  # Format root
+  mkfs.xfs -f -L root /dev/sda2
 
-# Format and activate swap
-mkswap -L swap /dev/sda3
-sleep 1
-swapon /dev/disk/by-label/swap
+  # Format and activate swap
+  mkswap -L swap /dev/sda3
+  sleep 1
+  swapon /dev/disk/by-label/swap
 
-# Format home
-mkfs.xfs -f -L home /dev/sda4
+  # Format home
+  mkfs.xfs -f -L home /dev/sda4
+else
+  parted -s -a optimal "$DISK_DEVICE" mklabel gpt
+  parted -s -a optimal "$DISK_DEVICE" mkpart "0%" "2MiB"
+  parted -s -a optimal "$DISK_DEVICE" name 1 bios
+  parted -s -a optimal "$DISK_DEVICE" set 1 boot on
+  parted -s -a optimal "$DISK_DEVICE" set 1 bios_grub on
+  parted -s -a optimal "$DISK_DEVICE" mkpart ext2 "2MiB" "${EFI_SIZE_IN_MIB}MiB"
+  parted -s -a optimal "$DISK_DEVICE" name 2 boot
+  parted -s -a optimal "$DISK_DEVICE" mkpart xfs "${EFI_SIZE_IN_MIB}MiB" "${ROOT_END_IN_MIB}MiB"
+  parted -s -a optimal "$DISK_DEVICE" name 3 root
+  parted -s -a optimal "$DISK_DEVICE" mkpart linux-swap "${ROOT_END_IN_MIB}MiB" "${SWAP_END_IN_MIB}MiB"
+  parted -s -a optimal "$DISK_DEVICE" name 4 swap
+  parted -s -a optimal "$DISK_DEVICE" mkpart xfs "${SWAP_END_IN_MIB}MiB" "100%"
+  parted -s -a optimal "$DISK_DEVICE" name 5 home
+
+  # Format the partitions
+  # https://wiki.archlinux.org/index.php/Installation_guide#Format_the_partitions
+
+  # Format boot
+  # https://wiki.archlinux.org/index.php/EFI_system_partition#Format_the_partition
+  mkfs.ext2 -L boot /dev/sda2
+
+  # Format root
+  mkfs.xfs -f -L root /dev/sda3
+
+  # Format and activate swap
+  mkswap -L swap /dev/sda4
+  sleep 1
+  swapon /dev/disk/by-label/swap
+
+  # Format home
+  mkfs.xfs -f -L home /dev/sda5
+fi
 
 # Mount the file systems
 # https://wiki.archlinux.org/index.php/Installation_guide#Mount_the_file_systems

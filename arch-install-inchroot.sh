@@ -33,12 +33,24 @@ passwd
 # https://wiki.archlinux.org/index.php/EFISTUB#efibootmgr
 if [[ `systemd-detect-virt` == "none" ]]; then
   pacman -S intel-ucode
-  BOOT_OPTIONS='root=PARTLABEL=root rw initrd=\intel-ucode.img initrd=\initramfs-linux.img acpi_backlight=vendor quiet loglevel=3 udev.log_priority=3 rd.systemd.show_status=auto rd.udev.log_priority=3 i915.fastboot=1 intel_iommu=on iommu=pt vsyscall=emulate resume=/dev/sda3'
+  INIT_PART='root=PARTLABEL=root rw initrd=\intel-ucode.img initrd=\initramfs-linux.img'
+  BOOT_OPTIONS='acpi_backlight=vendor quiet loglevel=3 udev.log_priority=3 rd.systemd.show_status=auto rd.udev.log_priority=3 i915.fastboot=1 intel_iommu=on iommu=pt vsyscall=emulate resume=/dev/sda3'
 else
-  BOOT_OPTIONS='root=PARTLABEL=root rw initrd=\initramfs-linux.img'
+  INIT_PART='root=PARTLABEL=root rw initrd=\initramfs-linux.img'
+  BOOT_OPTIONS=''
 fi
 
-efibootmgr --disk /dev/sda --part 1 --create --label 'Arch Linux' --loader /vmlinuz-linux --unicode "${BOOT_OPTIONS}" --verbose
+if [[ -d /sys/firmware/efi/efivars ]]; then
+  efibootmgr --disk /dev/sda --part 1 --create --label 'Arch Linux' --loader /vmlinuz-linux --unicode "${INIT_PART} ${BOOT_OPTIONS}" --verbose
+else
+  # Install GRUB for BIOS
+  # https://wiki.archlinux.org/index.php/GRUB#Installation
+  pacman -S grub
+  grub-install --target=i386-pc /dev/sda
+  # https://wiki.archlinux.org/index.php/GRUB#Generate_the_main_configuration_file
+  grub-mkconfig -o /boot/grub/grub.cfg
+  sed -i'' -e "s/#?\\(GRUB_CMDLINE_LINUX\\).*$/\\1=\"${BOOT_OPTIONS}\"/g" /etc/default/grub
+fi
 
 # Clone this repo for post-install scripting
 cd $HOME

@@ -1,8 +1,6 @@
 # TODO: Arch Linux ansible bootstrap setup
 
-- `arch-install.sh` detects BIOS (for coreboot) vs. UEFI
-  - BIOS: partition GPT, 1 MiB BIOS boot partition, 511 MiB /boot ext2, install GRUB
-  - UEFI: current setup w/ GPT, ESP partition, EFISTUB
+- setup mkinitcpio to lz4
 - `polybar` config to display KB layouts as only `US` or `Intl` (use layout
   index and associate each with a static label)
 - `polybar` config to display temperature/sensors
@@ -115,3 +113,6 @@
   - align title on left
   - more room for title
   - icon
+- `arch-install.sh` detects BIOS (for coreboot) vs. UEFI
+  - BIOS: partition GPT, 1 MiB BIOS boot partition, 511 MiB /boot ext2, install GRUB
+  - UEFI: current setup w/ GPT, ESP partition, EFISTUB
