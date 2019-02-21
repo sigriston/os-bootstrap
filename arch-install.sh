@@ -52,7 +52,7 @@ if [[ -d /sys/firmware/efi/efivars ]]; then
   mkfs.xfs -f -L home /dev/sda4
 else
   parted -s -a optimal "$DISK_DEVICE" mklabel gpt
-  parted -s -a optimal "$DISK_DEVICE" mkpart "0%" "2MiB"
+  parted -s -a optimal "$DISK_DEVICE" mkpart primary "0%" "2MiB"
   parted -s -a optimal "$DISK_DEVICE" name 1 bios
   parted -s -a optimal "$DISK_DEVICE" set 1 boot on
   parted -s -a optimal "$DISK_DEVICE" set 1 bios_grub on
