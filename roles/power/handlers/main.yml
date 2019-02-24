@@ -1,0 +1,37 @@
+---
+- name: Mask systemd-rfkill (service)
+  systemd:
+    name: systemd-rfkill.service
+    state: stopped
+    enabled: no
+    masked: yes
+  become: yes
+
+- name: Mask systemd-rfkill (socket)
+  systemd:
+    name: systemd-rfkill.socket
+    state: stopped
+    enabled: no
+    masked: yes
+  become: yes
+
+- name: Enable TLP (tlp)
+  systemd:
+    name: tlp
+    state: started
+    enabled: yes
+  become: yes
+
+- name: Enable TLP (tlp-sleep)
+  systemd:
+    name: tlp-sleep
+    state: started
+    enabled: yes
+  become: yes
+
+- name: Enable TLP (NetworkManager-dispatcher)
+  systemd:
+    name: NetworkManager-dispatcher
+    state: started
+    enabled: yes
+  become: yes

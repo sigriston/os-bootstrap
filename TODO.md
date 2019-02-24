@@ -13,9 +13,6 @@
     '\bconnected\b' | awk '{print $1}'`) and configure virtual desktops
     appropriately for how many monitors there are
   - `polybar` config should also have dynamic logic for bars on multiple monitors
-- TLP install?
-  - detect hardware and install it only on battery-powered hardware
-  - should remove udev script for changing governor?
 
 - `sxhkd` launchers / shortcuts config. Free keys:
   - a, e, r (RUN?), z (used with ctrl), u, d, x (used with ctrl), n (NAVIGATOR)
@@ -116,3 +113,6 @@
 - `arch-install.sh` detects BIOS (for coreboot) vs. UEFI
   - BIOS: partition GPT, 1 MiB BIOS boot partition, 511 MiB /boot ext2, install GRUB
   - UEFI: current setup w/ GPT, ESP partition, EFISTUB
+- TLP install?
+  - detect hardware and install it only on battery-powered hardware
+  - should remove udev script for changing governor?

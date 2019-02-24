@@ -3,21 +3,30 @@
   command: yay -S --noconfirm thinkfan-git
   args:
     creates: /usr/bin/thinkfan
+  when: hw_thinkpad
 
 - name: copy thinkfan configuration
   copy:
     src: thinkfan.conf
     dest: /etc/thinkfan.conf
   become: yes
+  when: hw_thinkpad
 
 - name: Install power-related tools
   package:
-    name: cpupower powertop
+    name: cpupower ethtool powertop smartmontools
     state: present
   become: yes
 
-- name: Add udev rules to use performance governor on AC power
-  copy:
-    src: 80-power-governor.rules
-    dest: /etc/udev/rules.d/80-power-governor.rules
+- name: Install TLP
+  package:
+    name: tlp tlp-rdw tp_smapi acpi_call
+    state: present
   become: yes
+  when: hw_thinkpad
+  notify:
+    - Mask systemd-rfkill (service)
+    - Mask systemd-rfkill (socket)
+    - Enable TLP (tlp)
+    - Enable TLP (tlp-sleep)
+    - Enable TLP (NetworkManager-dispatcher)

@@ -1,5 +1,6 @@
 ---
 dependencies:
+  - { role: hardware }
   - { role: modules }
   - { role: aur }
   - { role: storage }
