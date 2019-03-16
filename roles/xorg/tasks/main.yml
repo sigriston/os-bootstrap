@@ -49,6 +49,20 @@
     line: '<dead_acute> <c>                 	: "ç"   ccedilla # LATIN SMALL LETTER C WITH CEDILLA'
   become: yes
 
+- name: Support cedilla on GTK+2 apps
+  lineinfile:
+    path: /usr/lib/gtk-2.0/2.10.0/immodules.cache
+    regexp: '^"cedilla"'
+    line: '"cedilla" "Cedilla" "gtk20" "/usr/share/locale" "az:ca:co:en:fr:gv:oc:pt:sq:tr:wa"'
+  become: yes
+
+- name: Support cedilla on GTK+3 apps
+  lineinfile:
+    path: /usr/lib/gtk-3.0/3.0.0/immodules.cache
+    regexp: '^"cedilla"'
+    line: '"cedilla" "Cedilla" "gtk30" "/usr/share/locale" "az:ca:co:en:fr:gv:oc:pt:sq:tr:wa"'
+  become: yes
+
 - name: Install libxkbcommon
   package:
     name: libxkbcommon libxkbcommon-x11

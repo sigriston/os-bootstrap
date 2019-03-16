@@ -1,6 +1,5 @@
 # TODO: Arch Linux ansible bootstrap setup
 
-- enable cedilla in GTK
 - setup optimized mirrors
 - take out battery drivers (don't work under coreboot)
 - setup mkinitcpio to lz4
@@ -119,3 +118,4 @@
 - TLP install?
   - detect hardware and install it only on battery-powered hardware
   - should remove udev script for changing governor?
+- enable cedilla in GTK apps
