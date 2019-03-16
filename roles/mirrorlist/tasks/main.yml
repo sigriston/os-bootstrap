@@ -1,0 +1,16 @@
+---
+- name: Install reflector
+  package:
+    name: reflector
+    state: present
+  become: yes
+
+- name: Save backup of original mirrorlist
+  command: cp -n /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.orig
+  args:
+    creates: /etc/pacman.d/mirrorlist.orig
+  become: yes
+
+- name: Obtain optimized ranked mirrorlist
+  command: reflector -c "{{ mirrorlist_country }}" --sort rate --save /etc/pacman.d/mirrorlist
+  become: yes

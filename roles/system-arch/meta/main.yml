@@ -1,5 +1,6 @@
 ---
 dependencies:
+  - { role: mirrorlist }
   - { role: hardware }
   - { role: modules }
   - { role: aur }
