@@ -1,5 +1,8 @@
 # TODO: Arch Linux ansible bootstrap setup
 
+- enable cedilla in GTK
+- setup optimized mirrors
+- take out battery drivers (don't work under coreboot)
 - setup mkinitcpio to lz4
 - `polybar` config to display KB layouts as only `US` or `Intl` (use layout
   index and associate each with a static label)
