@@ -20,7 +20,7 @@
 
 - name: Install TLP
   package:
-    name: tlp tlp-rdw tp_smapi acpi_call
+    name: tlp tlp-rdw
     state: present
   become: yes
   when: hw_thinkpad

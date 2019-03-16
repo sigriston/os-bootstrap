@@ -1,6 +1,5 @@
 # TODO: Arch Linux ansible bootstrap setup
 
-- take out battery drivers (don't work under coreboot)
 - setup mkinitcpio to lz4
 - configure `mpv` to use hardware decoding whenever possible
 - `polybar` config to display KB layouts as only `US` or `Intl` (use layout
@@ -120,3 +119,4 @@
   - should remove udev script for changing governor?
 - enable cedilla in GTK apps
 - setup optimized mirrors
+- take out battery drivers (TLP 1.2 has native control)
