@@ -1,6 +1,5 @@
 # TODO: Arch Linux ansible bootstrap setup
 
-- setup mkinitcpio to lz4
 - configure `mpv` to use hardware decoding whenever possible
 - `polybar` config to display KB layouts as only `US` or `Intl` (use layout
   index and associate each with a static label)
@@ -120,3 +119,4 @@
 - enable cedilla in GTK apps
 - setup optimized mirrors
 - take out battery drivers (TLP 1.2 has native control)
+- setup mkinitcpio to lz4
