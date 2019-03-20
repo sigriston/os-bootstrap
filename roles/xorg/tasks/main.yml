@@ -209,6 +209,21 @@
     state: present
   become: yes
 
+- name: Copy mpv template config files
+  command: cp -r /usr/share/doc/mpv "{{ ansible_env.HOME }}/.config/mpv"
+  args:
+    creates: "{{ ansible_env.HOME }}/.config/mpv"
+  become: yes
+
+- name: Configure mpv for hardware decoding
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.config/mpv/mpv.conf"
+    insertafter: '^#hwdec=auto'
+    block: |
+      hwdec=vaapi
+      hwdec-codecs=all
+  become: yes
+
 - name: Install xdotool
   package:
     name: xdotool

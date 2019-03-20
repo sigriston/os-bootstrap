@@ -1,6 +1,6 @@
 # TODO: Arch Linux ansible bootstrap setup
 
-- configure `mpv` to use hardware decoding whenever possible
+- configure `tlp` (on `/etc/default/tlp` to have more aggressive perf when on AC)?
 - `polybar` config to display KB layouts as only `US` or `Intl` (use layout
   index and associate each with a static label)
 - `polybar` config to display temperature/sensors
@@ -120,3 +120,4 @@
 - setup optimized mirrors
 - take out battery drivers (TLP 1.2 has native control)
 - setup mkinitcpio to lz4
+- configure `mpv` to use hardware decoding whenever possible
