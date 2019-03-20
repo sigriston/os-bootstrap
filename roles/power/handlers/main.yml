@@ -35,3 +35,21 @@
     state: started
     enabled: yes
   become: yes
+
+- name: Restart TLP (tlp)
+  systemd:
+    name: tlp
+    state: restarted
+  become: yes
+
+- name: Restart TLP (tlp-sleep)
+  systemd:
+    name: tlp-sleep
+    state: restarted
+  become: yes
+
+- name: Restart TLP (NetworkManager-dispatcher)
+  systemd:
+    name: NetworkManager-dispatcher
+    state: restarted
+  become: yes

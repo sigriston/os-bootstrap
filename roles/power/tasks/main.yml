@@ -14,7 +14,7 @@
 
 - name: Install power-related tools
   package:
-    name: cpupower ethtool powertop smartmontools
+    name: cpupower ethtool powertop smartmontools x86_energy_perf_policy
     state: present
   become: yes
 
@@ -30,3 +30,14 @@
     - Enable TLP (tlp)
     - Enable TLP (tlp-sleep)
     - Enable TLP (NetworkManager-dispatcher)
+
+- name: Configure TLP
+  copy:
+    src: tlp
+    dest: /etc/default/tlp
+  become: yes
+  when: hw_thinkpad
+  notify:
+    - Restart TLP (tlp)
+    - Restart TLP (tlp-sleep)
+    - Restart TLP (NetworkManager-dispatcher)
