@@ -2,45 +2,22 @@
 tools_packages:
   - dos2unix
   - ffmpeg
-  - fzf
-  - gcc
-  - gdal
   - gdb
   - git
-  - go
-  - highlight
   - htop
   - hub
   - imagemagick
+  - isync
   - jq
-  - mosh
+  - mpv
   - neofetch
+  - neomutt
   - newsboat
-  - openssh
   - pandoc
-  - potrace
-  - povray
   - pv
-  - ranger
-  - rclone
-  - rtorrent
-  - sqlite
+  - sqlite3
   - tig
   - tree
   - unrar
-  - weechat
   - youtube-dl
   - zopfli
-
-arch_packages:
-  - editorconfig-core-c
-  - packer
-  - rsync
-  - task
-  - vagrant
-
-brew_packages:
-  - dockutil
-  - editorconfig
-  - mdbtools
-  - readline

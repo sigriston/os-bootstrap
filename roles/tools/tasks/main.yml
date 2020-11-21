@@ -4,18 +4,3 @@
     name: "{{ tools_packages }}"
     state: present
   become: yes
-
-- name: install arch packages
-  package:
-    name: "{{ arch_packages }}"
-    state: present
-  become: yes
-  when: ansible_os_family == 'Archlinux'
-
-- name: install xquartz
-  homebrew_cask: name=xquartz state=present
-  when: ansible_os_family == 'Darwin'
-
-- name: install homebrew packages
-  homebrew: name="{{ brew_packages }}" state=latest update_homebrew=yes
-  when: ansible_os_family == 'Darwin'

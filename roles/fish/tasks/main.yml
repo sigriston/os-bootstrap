@@ -30,7 +30,7 @@
 - name: install fisher packages
   shell: "fisher install IlanCosman/tide franciscolourenco/done"
   args:
-    creates: "{{ home }}/.config/fish/functions/fisher.fish"
+    creates: "{{ home }}/.config/fish/conf.d/done.fish"
     executable: "{{ which_fish.stdout }}"
 
 - name: create fish conf.d directory

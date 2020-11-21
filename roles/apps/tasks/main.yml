@@ -1,16 +1,7 @@
 ---
-- name: install arch apps
+- name: install ubuntu apps
   package:
-    name: "{{ arch_apps }}"
+    name: "{{ ubuntu_apps }}"
     state: present
   become: yes
-  when: ansible_os_family == 'Archlinux'
-
-- name: install arch apps from AUR
-  command: yay -S --noconfirm "{{ item }}"
-  loop: "{{ aur_apps }}"
-  when: ansible_os_family == 'Archlinux'
-
-- name: install homebrew cask apps
-  homebrew_cask: name="{{ cask_apps }}" state=present
-  when: ansible_os_family == 'Darwin'
+  when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Pop!_OS'

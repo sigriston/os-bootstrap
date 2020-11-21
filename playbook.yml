@@ -1,8 +1,4 @@
 ---
 - hosts: all
   roles:
-    - { role: system-arch-root, when: ansible_os_family == 'Archlinux' and ansible_user_id == 'root' }
-    - { role: system-arch, when: ansible_os_family == 'Archlinux' and ansible_user_id != 'root' }
-    - { role: system-osx, when: ansible_os_family == 'Darwin' }
-  vars:
-    ansible_python_interpreter: "/usr/bin/env python"
+    - system-ubuntu

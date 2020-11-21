@@ -2,10 +2,7 @@
 home: "{{ ansible_env.HOME }}"
 
 nodejs_packages:
-  - ava
-  - create-react-app
   - eslint
   - gulp
-  - javascript-typescript-langserver
   - jsonlint
   - yarn

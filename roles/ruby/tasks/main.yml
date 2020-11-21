@@ -1,8 +1,0 @@
----
-- name: install global ruby gems
-  gem:
-    name: "{{ item }}"
-    user_install: no
-    state: latest
-  become: yes
-  with_items: "{{ ruby_gems }}"

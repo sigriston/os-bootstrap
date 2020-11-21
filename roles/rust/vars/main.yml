@@ -3,8 +3,6 @@ home: "{{ ansible_env.HOME }}"
 
 rust_components:
   - clippy
-  - rls
-  - rust-analysis
   - rust-src
   - rustfmt
 

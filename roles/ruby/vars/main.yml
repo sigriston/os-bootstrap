@@ -1,5 +1,0 @@
----
-home: "{{ ansible_env.HOME }}"
-
-ruby_gems:
-  - compass

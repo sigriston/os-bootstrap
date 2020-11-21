@@ -1,3 +1,0 @@
----
-- name: reread defaults
-  command: defaults read com.googlecode.iterm2
