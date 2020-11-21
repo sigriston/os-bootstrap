@@ -25,9 +25,8 @@
     msg: "Node.js version is {{ nodejs_version.stdout }}"
 
 - name: install npm global packages
-  npm:
-    name: "{{ item }}"
-    global: yes
-    state: present
-    executable: "{{ ansible_env.HOME }}/.config/nvm/{{ nodejs_version.stdout }}/bin/npm"
+  shell: "npm i -g {{ item }}"
+  args:
+    creates: "{{ home }}/.config/nvm/{{ nodejs_version.stdout }}/lib/node_modules/{{ item }}"
+    executable: "{{ which_fish.stdout }}"
   loop: "{{ nodejs_packages }}"
