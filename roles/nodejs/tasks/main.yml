@@ -12,7 +12,7 @@
 - name: install node.js LTS
   shell: "nvm use lts"
   args:
-    creates: "{{ home }}/.config/nvm"
+    creates: "{{ home }}/.config/nvm/version"
     executable: "{{ which_fish.stdout }}"
 
 - name: grab node.js version
@@ -20,6 +20,9 @@
   args:
     executable: "{{ which_fish.stdout }}"
   register: nodejs_version
+
+- debug:
+    msg: "Node.js version is {{ nodejs_version.stdout }}"
 
 - name: install npm global packages
   npm:
