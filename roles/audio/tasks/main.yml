@@ -1,6 +1,0 @@
----
-- name: Install pulseaudio
-  package:
-    name: pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulsemixer
-    state: present
-  become: yes

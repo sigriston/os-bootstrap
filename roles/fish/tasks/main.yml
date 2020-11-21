@@ -22,19 +22,16 @@
   file: path="{{ home }}/.config/fish/functions" state=directory
 
 - name: install fisher
-  get_url: url=http://git.io/fisher dest="{{ home }}/.config/fish/functions/fisher.fish"
-
-- name: link fishfile
-  file: path="{{ home }}/.config/fish/fishfile" src="{{ src_dir }}/dotfiles/fish/fishfile" state=link force=yes
+  shell: "curl -sL git.io/fisher | source && fisher install jorgebucaran/fisher"
+  args:
+    creates: "{{ home }}/.config/fish/functions/fisher.fish"
+    executable: "{{ which_fish.stdout }}"
 
 - name: install fisher packages
-  expect:
-    command: "{{ which_fish.stdout }} -l -i"
-    creates: "{{ home }}/.config/fish/functions/bass.fish"
-    responses:
-      ">":
-        - fisher
-        - exit
+  shell: "fisher install IlanCosman/tide franciscolourenco/done"
+  args:
+    creates: "{{ home }}/.config/fish/functions/fisher.fish"
+    executable: "{{ which_fish.stdout }}"
 
 - name: create fish conf.d directory
   file: path="{{ home }}/.config/fish/conf.d" state=directory
@@ -44,16 +41,3 @@
   loop:
     - editor.fish
     - git.fish
-
-- name: install pkgfile (cmd not found hook)
-  package:
-    name: pkgfile
-    state: present
-  become: yes
-  when: ansible_os_family == 'Archlinux'
-  register: install_pkgfile
-
-- name: update pkgfile database
-  command: pkgfile -u
-  become: yes
-  when: install_pkgfile is changed

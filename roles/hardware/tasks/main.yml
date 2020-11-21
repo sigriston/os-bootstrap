@@ -1,6 +1,0 @@
----
-- name: grab device model from /sys
-  set_fact: hw_model="{{ lookup('file', '/sys/devices/virtual/dmi/id/board_version') }}"
-
-- name: find out if we're in a ThinkPad
-  set_fact: hw_thinkpad="{{ 'thinkpad' in (hw_model | lower) }}"

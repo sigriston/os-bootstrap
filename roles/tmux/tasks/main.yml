@@ -16,3 +16,8 @@
 
 - name: install tmux plugin manager (tpm)
   git: repo=https://github.com/tmux-plugins/tpm.git dest="{{ home }}/.tmux/plugins/tpm"
+
+- name: install tpm plugins
+  command: "{{ home }}/.tmux/plugins/tpm/scripts/install_plugins.sh"
+  args:
+    creates: "{{ home }}/.tmux/plugins/tmux-themepack"

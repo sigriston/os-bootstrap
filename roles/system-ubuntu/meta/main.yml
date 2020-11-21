@@ -1,0 +1,13 @@
+---
+dependencies:
+  - { role: dotfiles }
+  - { role: tmux }
+  - { role: fish }
+  - { role: vim }
+  - { role: docker }
+    #  - { role: tools }
+    #  - { role: apps }
+    #  - { role: nodejs }
+    #  - { role: R }
+    #  - { role: rust }
+    #  - { role: themes }
