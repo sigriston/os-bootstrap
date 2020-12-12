@@ -19,3 +19,4 @@
   lineinfile:
     path: "{{ ansible_env.HOME }}/.config/fish/config.fish"
     line: source ~/.asdf/asdf.fish
+    create: yes

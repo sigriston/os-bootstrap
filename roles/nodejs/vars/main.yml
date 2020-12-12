@@ -1,6 +1,8 @@
 ---
 home: "{{ ansible_env.HOME }}"
 
+nodejs_version: "14.15.1"
+
 nodejs_packages:
   - eslint
   - gulp

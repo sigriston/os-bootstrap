@@ -3,30 +3,32 @@
   command: which fish
   register: which_fish
 
-- name: install nvm
-  shell: "fisher install jorgebucaran/nvm.fish"
+- name: install asdf-nodejs
+  shell: "asdf plugin add nodejs"
   args:
-    creates: "{{ home }}/.config/fish/functions/nvm.fish"
+    creates: "{{ home }}/.asdf/plugins/nodejs"
     executable: "{{ which_fish.stdout }}"
+  register: asdf_nodejs_install
 
-- name: install node.js LTS
-  shell: "nvm use lts"
-  args:
-    creates: "{{ home }}/.config/nvm/version"
-    executable: "{{ which_fish.stdout }}"
-
-- name: grab node.js version
-  shell: "node --version | tail -c+2"
-  args:
-    executable: "{{ which_fish.stdout }}"
-  register: nodejs_version
-
-- debug:
-    msg: "Node.js version is {{ nodejs_version.stdout }}"
-
-- name: install npm global packages
-  shell: "npm i -g {{ item }}"
-  args:
-    creates: "{{ home }}/.config/nvm/{{ nodejs_version.stdout }}/lib/node_modules/{{ item }}"
-    executable: "{{ which_fish.stdout }}"
+- name: ensure npm global packages
+  lineinfile:
+    path: "{{ home }}/.default-npm-packages"
+    line: "{{ item }}"
+    create: yes
   loop: "{{ nodejs_packages }}"
+
+- name: import node.js release team keys
+  command: "{{ home }}/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+  when: asdf_nodejs_install.changed
+
+- name: install node.js
+  shell: "asdf install nodejs {{ nodejs_version }}"
+  args:
+    creates: "{{ home }}/.asdf/installs/nodejs/{{ nodejs_version }}"
+    executable: "{{ which_fish.stdout }}"
+
+- name: set global node.js version
+  shell: "asdf global nodejs {{ nodejs_version }}"
+  args:
+    creates: "{{ home }}/.tool-versions"
+    executable: "{{ which_fish.stdout }}"
