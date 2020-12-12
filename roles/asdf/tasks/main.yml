@@ -1,0 +1,21 @@
+---
+- name: grab asdf release tags via curl
+  uri:
+    url: https://api.github.com/repos/asdf-vm/asdf/tags
+    return_content: yes
+  register: asdf_tags_json
+
+- name: grab latest asdf release
+  set_fact:
+    asdf_release: "{{ (asdf_tags_json.content | from_json)[0].name }}"
+
+- name: git checkout latest asdf
+  git:
+    repo: 'https://github.com/asdf-vm/asdf.git'
+    dest: "{{ ansible_env.HOME }}/.asdf"
+    version: "{{ asdf_release }}"
+
+- name: setup asdf with fish
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.config/fish/config.fish"
+    line: source ~/.asdf/asdf.fish
