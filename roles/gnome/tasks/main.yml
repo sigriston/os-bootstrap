@@ -1,7 +1,7 @@
 ---
 - name: install python psutil package
   package:
-    name: python-psutil
+    name: python3-psutil
     state: present
   become: yes
 
