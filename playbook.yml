@@ -5,5 +5,13 @@
     set_fact:
       ansible_os_family: 'Debian'
     when: ansible_os_family == 'Pop!_OS'
+  - name: autoclean + autoremove + update + upgrade apt
+    apt:
+      autoclean: yes
+      autoremove: yes
+      update_cache: yes
+      upgrade: yes
+    when: ansible_os_family == 'Debian'
+    become: yes
   roles:
     - system-ubuntu

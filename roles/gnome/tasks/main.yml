@@ -21,6 +21,20 @@
     key: "/org/gnome/desktop/input-sources/per-window"
     value: "true"
 
+- name: enable cedilla in GTK
+  lineinfile:
+    path: /etc/environment.d/80-cedilla.conf
+    line: GTK_IM_MODULE=cedilla
+    create: yes
+  become: yes
+
+- name: enable cedilla in QT
+  lineinfile:
+    path: /etc/environment.d/80-cedilla.conf
+    line: QT_IM_MODULE=cedilla
+    create: yes
+  become: yes
+
 - name: check if fave wallpaper exists
   stat:
     path: /usr/share/backgrounds/pop/nick-nazzaro-ice-cave.png
@@ -81,9 +95,6 @@
     key: "/org/gnome/shell/enabled-extensions"
     state: read
   register: gnome_enabled_extensions
-
-- debug:
-    var: gnome_enabled_extensions
 
 - name: install dash-to-panel
   package:

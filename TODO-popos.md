@@ -13,7 +13,7 @@
 
 - [x] setup nerd fonts
 - [x] setup my desktop using the dconf dump
-- [ ] setup cedilla
+- [x] setup cedilla
 - [ ] setup monitors.xml
 
 ## misc
