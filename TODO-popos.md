@@ -7,12 +7,7 @@
 
 ## R
 
-- [ ] install latest RStudio
-
-## R (for the distant future)
-
-- consider migrating to [asdf-R] plugin (it's old - 2018)
-- consider making an ansible module to manipulate R packages
+- [x] install latest RStudio
 
 ## GNOME dconf
 
@@ -36,6 +31,11 @@
 ## ubuntu?
 
 - try to replicate setup above in vanilla ubuntu 20.04 (prep for work)
+
+## R (for the distant future)
+
+- consider migrating to [asdf-R] plugin (it's old - 2018)
+- consider making an ansible module to manipulate R packages
 
 [asdf]: https://github.com/asdf-vm/asdf
 [asdf-nodejs]: https://github.com/asdf-vm/asdf-nodejs

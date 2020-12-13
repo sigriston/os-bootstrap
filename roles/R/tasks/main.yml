@@ -26,3 +26,18 @@
   args:
     creates: "{{ rlibpath }}/{{ item }}"
   loop: "{{ R_packages }}"
+
+- name: grab RStudio release tags via curl
+  uri:
+    url: https://api.github.com/repos/rstudio/rstudio/tags
+    return_content: yes
+  register: rstudio_tags_json
+
+- name: grab latest RStudio release
+  set_fact:
+    rstudio_release: "{{ (rstudio_tags_json.content | from_json)[0].name[1:] }}"
+
+- name: install RStudio package
+  apt:
+    deb: "https://download1.rstudio.org/desktop/bionic/amd64/rstudio-{{ rstudio_release }}-amd64.deb"
+  become: yes
