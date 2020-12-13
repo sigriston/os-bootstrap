@@ -6,6 +6,7 @@ dependencies:
   - { role: vim }
   - { role: docker }
   - { role: tools }
+  - { role: fonts }
   - { role: apps }
   - { role: asdf }
   - { role: nodejs }

@@ -1,4 +1,9 @@
 ---
 - hosts: all
+  pre_tasks:
+  - name: Fix ansible_os_family for Pop!_OS
+    set_fact:
+      ansible_os_family: 'Debian'
+    when: ansible_os_family == 'Pop!_OS'
   roles:
     - system-ubuntu

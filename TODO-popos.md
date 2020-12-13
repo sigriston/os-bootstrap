@@ -11,7 +11,7 @@
 
 ## GNOME dconf
 
-- setup nerd fonts
+- [x] setup nerd fonts
 - setup my desktop using the dconf dump
 - setup monitors.xml
 - setup cedilla
