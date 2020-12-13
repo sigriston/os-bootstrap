@@ -7,6 +7,7 @@ dependencies:
   - { role: docker }
   - { role: tools }
   - { role: fonts }
+  - { role: gnome }
   - { role: apps }
   - { role: asdf }
   - { role: nodejs }

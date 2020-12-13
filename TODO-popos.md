@@ -12,9 +12,9 @@
 ## GNOME dconf
 
 - [x] setup nerd fonts
-- setup my desktop using the dconf dump
-- setup monitors.xml
-- setup cedilla
+- [x] setup my desktop using the dconf dump
+- [ ] setup cedilla
+- [ ] setup monitors.xml
 
 ## misc
 

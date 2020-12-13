@@ -1,0 +1,150 @@
+---
+- name: install python psutil package
+  package:
+    name: python-psutil
+    state: present
+  become: yes
+
+- name: clone nord-gnome-terminal
+  git: repo=http://github.com/arcticicestudio/nord-gnome-terminal dest="{{ src_dir }}/nord-gnome-terminal"
+
+- name: install nord-gnome-terminal
+  command: "{{ src_dir }}/nord-gnome-terminal/src/nord.sh"
+
+- name: configure keyboard layouts
+  community.general.dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'us'), ('xkb', 'us+intl')]"
+
+- name: make keyboard layouts per-window
+  community.general.dconf:
+    key: "/org/gnome/desktop/input-sources/per-window"
+    value: "true"
+
+- name: check if fave wallpaper exists
+  stat:
+    path: /usr/share/backgrounds/pop/nick-nazzaro-ice-cave.png
+  register: stat_wallpaper
+
+- name: set fave wallpaper
+  community.general.dconf:
+    key: "/org/gnome/desktop/background/picture-uri"
+    value: "'file:///usr/share/backgrounds/pop/nick-nazzaro-ice-cave.png'"
+
+- name: set fave wallpaper in screensaver as well
+  community.general.dconf:
+    key: "/org/gnome/desktop/screensaver/picture-uri"
+    value: "'file:///usr/share/backgrounds/pop/nick-nazzaro-ice-cave.png'"
+
+- name: enable Night Light
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled"
+    value: "true"
+
+- name: enable RGBA antialiasing
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/xsettings/antialiasing"
+    value: "'rgba'"
+
+- name: '[dash-to-panel] appicon-margin'
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/dash-to-panel/appicon-margin"
+    value: "4"
+
+- name: '[dash-to-panel] hotkeys-overlay-combo'
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/dash-to-panel/hotkeys-overlay-combo"
+    value: "'TEMPORARILY'"
+
+- name: '[dash-to-panel] intellihide'
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/dash-to-panel/intellihide"
+    value: "false"
+
+- name: '[dash-to-panel] location-clock'
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/dash-to-panel/location-clock"
+    value: "'STATUSRIGHT'"
+
+- name: '[dash-to-panel] panel-size'
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/dash-to-panel/panel-size"
+    value: "32"
+
+- name: '[pop-shell] tile-by-default'
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/pop-shell/tile-by-default"
+    value: "true"
+
+- name: get enabled-extensions
+  community.general.dconf:
+    key: "/org/gnome/shell/enabled-extensions"
+    state: read
+  register: gnome_enabled_extensions
+
+- debug:
+    var: gnome_enabled_extensions
+
+- name: install dash-to-panel
+  package:
+    name: gnome-shell-extension-dash-to-panel
+    state: present
+  become: yes
+  register: install_dash_to_panel
+
+- name: install GPaste
+  package:
+    name: gnome-shell-extensions-gpaste
+    state: present
+  become: yes
+  register: install_gpaste
+
+- name: restart gnome-shell
+  command: killall -SIGQUIT gnome-shell
+  when: install_dash_to_panel.changed or install_gpaste.changed
+
+- name: enable dash-to-panel and GPaste
+  community.general.dconf:
+    key: "/org/gnome/shell/enabled-extensions"
+    value: "['dash-to-panel@jderose9.github.com', 'GPaste@gnome-shell-extensions.gnome.org']"
+  when:
+    - not ((gnome_enabled_extensions.value or '') | regex_search('dash-to-panel@jderose9\\.github\\.com'))
+    - not ((gnome_enabled_extensions.value or '') | regex_search('GPaste@gnome-shell-extensions\\.gnome\\.org'))
+
+- name: get raw terminal profile ID list
+  community.general.dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/list"
+    state: read
+  register: gnome_terminal_profile_ids_raw
+
+- name: get terminal profile IDs
+  set_fact:
+    gnome_terminal_profile_ids: "{{ gnome_terminal_profile_ids_raw.value | regex_findall('\\b[0-9a-f\\-]+\\b') }}"
+
+- name: get terminal profiles
+  community.general.dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:{{ item }}/visible-name"
+    state: read
+  loop: "{{ gnome_terminal_profile_ids }}"
+  register: gnome_terminal_profiles
+
+- name: get Nord profile ID
+  set_fact:
+    nord_profile_id: "{{ gnome_terminal_profiles.results | community.general.json_query(nord_query) }}"
+  vars:
+    nord_query: "([?value=='\\'Nord\\''])[0].item"
+
+- name: disable blinking cursor
+  community.general.dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:{{ nord_profile_id }}/cursor-blink-mode"
+    value: "'off'"
+
+- name: set terminal font
+  community.general.dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:{{ nord_profile_id }}/font"
+    value: "'FiraCode Nerd Font Mono 12'"
+
+- name: set Nord as default profile
+  community.general.dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/default"
+    value: "'{{ nord_profile_id }}'"
