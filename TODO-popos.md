@@ -7,11 +7,16 @@
 
 ## R
 
+- [ ] install latest RStudio
+
+## R (for the distant future)
+
 - consider migrating to [asdf-R] plugin (it's old - 2018)
 - consider making an ansible module to manipulate R packages
 
 ## GNOME dconf
 
+- setup nerd fonts
 - setup my desktop using the dconf dump
 - setup monitors.xml
 - setup cedilla
