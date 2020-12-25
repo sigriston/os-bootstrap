@@ -159,3 +159,8 @@
   community.general.dconf:
     key: "/org/gnome/terminal/legacy/profiles:/default"
     value: "'{{ nord_profile_id }}'"
+
+- name: set monitor order
+  gnome_monitor_order:
+    name: foobar
+    new: yes
