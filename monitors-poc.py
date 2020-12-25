@@ -133,21 +133,34 @@ class Monitors:
 
     def to_xml(self):
         configuration = ET.Element('configuration')
-        for lm in self.configuration:
+        for lm in sorted(self.configuration, key=lambda m: m.x):
             configuration.append(lm.to_xml())
         monitors = ET.Element('monitors', version='2')
         monitors.append(configuration)
         return monitors
 
+serials_l2r = ['xxxxxxxxxxxx', 'yyyyyyyyyyyy', 'zzzzzzzzzzzz']
+the_primary = 'yyyyyyyyyyyy'
+
 lm_list = []
 for (lm, info) in zip(logical_monitors, monitor_infos):
     monitorspec = MonitorSpec(info.spec.connector, info.spec.vendor, info.spec.product, info.spec.serial)
-    active_mode = info.modes[0]
-    mode = Mode(active_mode.width, active_mode.height, active_mode.refresh)
+    [preferred_mode] = [mode for mode in info.modes if mode.opts.get('is-preferred')]
+    mode = Mode(preferred_mode.width, preferred_mode.height, preferred_mode.refresh)
     monitor = Monitor(monitorspec, mode)
     logicalmonitor = LogicalMonitor(lm.x, lm.y, lm.scale, lm.primary, monitor)
     lm_list.append(logicalmonitor)
-monitors = Monitors(lm_list)
+
+l2r_list = []
+current_x = 0
+for serial in serials_l2r:
+    [lm] = [lm for lm in lm_list if lm.monitor.monitorspec.serial == serial]
+    lm.x = current_x
+    lm.primary = serial == the_primary
+    current_x = current_x + lm.monitor.mode.width
+    l2r_list.append(lm)
+
+monitors = Monitors(l2r_list)
 monitors_dom = parseString(ET.tostring(monitors.to_xml(), encoding='unicode'))
 
 print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FINAL <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
