@@ -18,7 +18,7 @@ RETURN = r'''
 from ansible.module_utils.basic import AnsibleModule
 from collections import namedtuple
 from dataclasses import dataclass
-from os.path import join
+from os.path import isdir, join
 from pydbus import SessionBus
 from typing import List
 import xml.etree.ElementTree as ET
@@ -177,14 +177,21 @@ def make_monitors_xml(pth, serials_l2r, the_primary=None):
     monitors = Monitors(l2r_list)
     monitors_dom = parseString(ET.tostring(monitors.to_xml(), encoding='unicode'))
     monitors_str = monitors_dom.toprettyxml(indent='  ')
-    final_path = join(pth, 'monitors.xml')
-    with open(final_path, 'w') as file:
-        file.write(monitors_str)
+
+    changed = True
+    with open(pth, 'r+') as file:
+        orig_str = file.read()
+        if orig_str == monitors_str:
+            changed = False
+        else:
+            file.write(monitors_str)
+    return changed
 
 def run_module():
     # define available arguments/parameters a user can pass to the module
     module_args = dict(
-        monitors=dict(type='list', elements='str', required=True, aliases=['name']),
+        path=dict(type='path', required=True, aliases=['name'])
+        monitors=dict(type='list', elements='str', required=True),
         primary=dict(type='str', required=False),
     )
 
@@ -214,21 +221,18 @@ def run_module():
     if module.check_mode:
         module.exit_json(**result)
 
-    # manipulate or modify the state as needed (this is going to be the
-    # part where your module will do what it needs to do)
-    result['original_message'] = module.params['name']
-    result['message'] = 'goodbye'
+    dir_path = module.params['path']
 
-    # use whatever logic you need to determine whether or not this module
-    # made any modifications to your target
-    if module.params['new']:
-        result['changed'] = True
+    try:
+        if not isdir(dir_path):
+            raise FileNotFoundError(f'Path {dir_path} is not a directory')
 
-    # during the execution of the module, if there is an exception or a
-    # conditional state that effectively causes a failure, run
-    # AnsibleModule.fail_json() to pass in the message and the result
-    if module.params['name'] == 'fail me':
-        module.fail_json(msg='You requested this to fail', **result)
+        final_path = join(dir_path, 'monitors.xml')
+        monitors = module.params['monitors']
+        primary = module.params.get('primary')
+        result['changed'] = make_monitors_xml(final_path, monitors, primary)
+    except Exception as e:
+        module.fail_json(msg=str(e), **result)
 
     # in the event of a successful module execution, you will want to
     # simple AnsibleModule.exit_json(), passing the key/value results
